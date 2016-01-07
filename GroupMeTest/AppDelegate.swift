@@ -21,22 +21,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let baseURL = "https://api.groupme.com/v3" // Base String for all GroupMe API calls
     var joinURL = String() // URL for joining (mutable)
     
-    /* 
+    /*
     Function Hierarchy
     1. application() - runs when opened from URL (ie after OAuth login)
-        -Init Parse keys
-        -Retrieve and store ACESS_TOKEN (of user)
-            -TODO: Keep this stored for later logins (avoid doing OAuth again)
-        -Makes call to checkForOpen()
-            -TODO: Move this away, checkForOpen() should ONLY be called when user wants to JOIN a group
+    -Init Parse keys
+    -Retrieve and store ACESS_TOKEN (of user)
+    -TODO: Keep this stored for later logins (avoid doing OAuth again)
+    -Makes call to checkForOpen()
+    -TODO: Move this away, checkForOpen() should ONLY be called when user wants to JOIN a group
     
     2. checkForOpen() - called when searching for open groups for a given course name (String)
-        -Case 1: Open group(s) (<7 members on Parse), calls checkEmpty() on group with greatest member count
-        -Case 2: No open groups - makes group (with admin token), stores info on Parse, and calls makeString() 
-        -TODO: Case 3: Error - add to logs
+    -Case 1: Open group(s) (<7 members on Parse), calls checkEmpty() on group with greatest member count
+    -Case 2: No open groups - makes group (with admin token), stores info on Parse, and calls makeString()
+    -TODO: Case 3: Error - add to logs
     
-    3. checkEmpty() - called when joining a group to see if all members have left or not 
-        -
+    3. checkEmpty() - called when joining a group to see if all members have left or not
+    -
     */
     
     // Add handleOpenURL function- will call this function everytime the app is opened from a URL
@@ -52,95 +52,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let queryArray = urlString!.componentsSeparatedByString("=") // split url like Java's String.split()
         ACCESS_TOKEN = queryArray[1]; // should contain ACCESS TOKEN only
         //        print(ACCESS_TOKEN);
-
+        
         self.checkForOpen(courseString)
-
+        
         return true;
-    }
-    
-    // Helper function for finding open groups
-    // Input: Class Name (String)
-    // Output: /groups/:id/join/:share_token (String)
-    func checkForOpen(myClass: String) -> Void {
-        var objectID = String()
-        var groupID = String()
-        var shareToken = String()
-        var maxMembers = 0
-        
-        // This code is for pulling stuff FROM PARSE
-        // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
-        print("Receiving query from Parse")
-        var query = PFQuery(className:myClass)
-        query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count) groups.")
-                if objects!.count > 0 {
-                // Do something with the found objects
-                if let objects = objects {
-                    for object in objects {
-                        print("Object ID: " + object.objectId!)
-                        print("Group ID: " + String(object["groupID"]))
-                        print("Share Token: " + String(object["shareToken"]))
-                        print("Member Count: " + String(object["memberCount"]))
-                        
-                        if object["memberCount"] as! Int > maxMembers {
-                            objectID = object.objectId!
-                            groupID = object["groupID"] as! String
-                            shareToken = object["shareToken"] as! String
-                            maxMembers = object["memberCount"] as! Int
-                        }
-                    }
-                }
-
-                self.checkEmpty(groupID, shareToken: shareToken, objID: objectID)
-                
-//              self.makeString(groupID, myToken: shareToken, objID: objectID)
-                }
-  
-                
-            else {
-                // Log details of the failure
-                // print("Error: \(error!) \(error!.userInfo)")
-                // Should make a new group and add its info to Parse
-                
-//                // Make a new group
-//                let parameters: [String: AnyObject] = ["name":myClass, "share":true]
-//                Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
-//                    .responseJSON { response in
-//                        if let test = response.result.value {
-//                            // Code for parsing Group ID
-//                            groupID = "\(test["response"]!!["group_id"]!!)"
-//                            // Code for parsing Share Token
-//                            var shareURL = test["response"]!!["share_url"]!!
-//                            var shareArray = shareURL.componentsSeparatedByString("/")
-//                            shareToken = shareArray[shareArray.count-1]
-//                        }
-//                        
-//                }
-//                
-//                // Add new object to Parse
-//                // CITE: Taken from Parse's quick start tutorial: https://parse.com/apps/quickstart#parse_data/mobile/ios/swift/existing
-//                var testObject = PFObject(className: self.courseString)
-//                testObject["groupID"] = groupID
-//                testObject["shareToken"] = shareToken
-//                testObject["memberCount"] = 1
-//                testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-//                    if (success) {
-//                        print("New group has been created and stored.")
-//                        self.makeString(groupID, shareToken: shareToken, objID: objectID) // Callback function
-//                    }
-//                    else {
-//                        print("Error has occurred in storing new group")
-//                        print(error)
-//                    }
-//                }
-            }
-            //end of big else
-        }
-        
     }
     
     // Get group information for the group of interest
@@ -162,8 +77,53 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     self.makeString(groupID, shareToken: shareToken, objID: objID) //Proceed to making the Alamofire request to join GroupMe group and updating Parse
                 }
         }
-
+        
     }
+    
+    // Callback function to be called by checkForOpen
+    // Takes inputs of 'Share Token' and 'Group ID' and returns a URL String to be used in GroupMe JOIN calls
+    // Output is of form: /groups/:id/join/:share_token (String)
+    
+    func makeString(groupID: String, shareToken: String, objID: String) -> Void {
+        print("/groups/" + groupID + "/join/" + shareToken)
+        self.joinURL = "/groups/" + groupID + "/join/" + shareToken
+        self.joinGroup(joinURL, objID: objID)
+    }
+    
+    // Helper function that joins a group
+    // Inputs: output string from function 'makeString' and user's access token (ACCESS_TOKEN)
+    // Output is boolean for success or fail
+    
+    func joinGroup(myRequest: String, objID: String) {
+        
+        // Add user to group
+        Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + self.ACCESS_TOKEN)
+        print("Group Joined")
+        //            .responseJSON { response in
+        //                if let myResponse = response.result.value {
+        //                    if Int(myResponse["meta"]!!["code"]!! as! NSNumber) == 200 {
+        //                        return true
+        //                    }
+        //                    else {
+        //                        return false
+        //                    }
+        //                }
+        //        }
+        
+        // Update Parse's member count for that group
+        var query = PFQuery(className:courseString)
+        query.getObjectInBackgroundWithId(objID) {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let object = object {
+                var temp: Int = object["memberCount"] as! Int
+                object["memberCount"] = temp + 1
+                object.saveInBackground()
+            }
+        }
+    }
+    
     
     // Delete group from both GroupMe and Parse
     func deleteGroup(groupID:String, objID:String) -> Void {
@@ -183,55 +143,90 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    
+    // Helper function for finding open groups
+    // Input: Class Name (String)
+    // Output: /groups/:id/join/:share_token (String)
+    func checkForOpen(myClass: String) -> Void {
+        var objectID = String()
+        var groupID = String()
+        var shareToken = String()
+        var maxMembers = 0
+        
+        // This code is for pulling stuff FROM PARSE
+        // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
+        print("Receiving query from Parse")
+        var query = PFQuery(className:myClass)
+        query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                // The find succeeded.
+                print("Successfully retrieved \(objects!.count) open groups.")
+                if objects!.count > 0 {
+                    // Do something with the found objects
+                    if let objects = objects {
+                        for object in objects {
+                            print("Object ID: " + object.objectId!)
+                            print("Group ID: " + String(object["groupID"]))
+                            print("Share Token: " + String(object["shareToken"]))
+                            print("Member Count: " + String(object["memberCount"]))
+                            if object["memberCount"] as! Int > maxMembers {
+                                objectID = object.objectId!
+                                groupID = object["groupID"] as! String
+                                shareToken = object["shareToken"] as! String
+                                maxMembers = object["memberCount"] as! Int
+                            }
+                        }
+                    }
+                    self.checkEmpty(groupID, shareToken: shareToken, objID: objectID)
+                }
+                else {
+                    // Make a new group
+                    let parameters: [String: AnyObject] = ["name":myClass, "share":true]
+                    Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
+                        .responseJSON { response in
+                            if let test = response.result.value {
+                                // Code for parsing Group ID
+                                groupID = "\(test["response"]!!["group_id"]!!)"
+                                // Code for parsing Share Token
+                                var shareURL = test["response"]!!["share_url"]!!
+                                var shareArray = shareURL.componentsSeparatedByString("/")
+                                shareToken = shareArray[shareArray.count-1]
+                                
+                                // Add new object to Parse
+                                // CITE: Taken from Parse's quick start tutorial: https://parse.com/apps/quickstart#parse_data/mobile/ios/swift/existing
+                                var testObject = PFObject(className: self.courseString)
+                                testObject["groupID"] = groupID
+                                testObject["shareToken"] = shareToken
+                                testObject["memberCount"] = 1
+                                testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                                    if (success) {
+                                        print("New group has been created and stored.")
+                                        self.makeString(groupID, shareToken: shareToken, objID: objectID) // Callback function
+                                    }
+                                    else {
+                                        print("Error has occurred in storing new group")
+                                        print(error)
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+            else {
+                // Log details of the failure
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+        
+    }
+    
+    
     // Prints a String
     func testFunc(myString: String) {
         print(myString)
     }
-    
-    // Callback function to be called by checkForOpen
-    // Takes inputs of 'Share Token' and 'Group ID' and returns a URL String to be used in GroupMe JOIN calls
-    // Output is of form: /groups/:id/join/:share_token (String)
-    
-    func makeString(groupID: String, shareToken: String, objID: String) -> Void {
-        print("/groups/" + groupID + "/join/" + shareToken)
-        self.joinURL = "/groups/" + groupID + "/join/" + shareToken
-        joinGroup(joinURL, objID: objID)
-    }
-    
-    // Helper function that joins a group
-    // Inputs: output string from function 'makeString' and user's access token (ACCESS_TOKEN)
-    // Output is boolean for success or fail
-    
-    func joinGroup(myRequest: String, objID: String) {
-        
-        // Add user to group
-        Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + self.ACCESS_TOKEN)
-        print("Group Joined")
-//            .responseJSON { response in
-//                if let myResponse = response.result.value {
-//                    if Int(myResponse["meta"]!!["code"]!! as! NSNumber) == 200 {
-//                        return true
-//                    }
-//                    else {
-//                        return false
-//                    }
-//                }
-//        }
-        
-        // Update Parse's member count for that group
-        var query = PFQuery(className:courseString)
-        query.getObjectInBackgroundWithId(objID) {
-            (object: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let object = object {
-                var temp: Int = object["memberCount"] as! Int
-                object["memberCount"] = temp + 1
-                object.saveInBackground()
-            }
-        }
-    }
-
     
     
     func applicationWillResignActive(application: UIApplication) {
