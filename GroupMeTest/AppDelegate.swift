@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ACCESS_TOKEN: String! // This access token belongs to the user and will be used to join or leave groups that have been created already (user will never create a group)
     var ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6" // This access token corresponds to an admin account that we will use to create and track every single group
     var courseString = "Test2" // Placeholder Course String
-    var sectionNumber = "99" //Placeholder Section Number
+    var sectionNumber = "99" // Placeholder Section Number
     let baseURL = "https://api.groupme.com/v3" // Base String for all GroupMe API calls
     var joinURL = String() // URL for joining (mutable)
     
@@ -31,13 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     -Makes call to checkForOpen()
     -TODO: Move this away, checkForOpen() should ONLY be called when user wants to JOIN a group
     
-    2. checkForOpen() - called when searching for open groups for a given course name (String)
+    2. checkForOpen() - called by clicking on an existing section
     -Case 1: Open group(s) (<7 members on Parse), calls checkEmpty() on group with greatest member count
     -Case 2: No open groups - makes group (with admin token), stores info on Parse, and calls makeString()
     -TODO: Case 3: Error - add to logs
     
-    3. checkEmpty() - called when joining a group to see if all members have left or not
-    -
+    3. makeSection() - called by clicking on 'Make new section'
+    -Makes a new group and adds information to Parse like checkForOpen()
     */
     
     // Add handleOpenURL function- will call this function everytime the app is opened from a URL
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    // Callback function to be called by checkForOpen
+    // Function to be called by checkForOpen
     // Takes inputs of 'Share Token' and 'Group ID' and returns a URL String to be used in GroupMe JOIN calls
     // Output is of form: /groups/:id/join/:share_token (String)
     
@@ -229,6 +229,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
+    // Helper function to make a new group when section doesn't exist
+    // Inputs: course name, course section
     func makeSection(myClass: String, mySection: String){
         var objectID = String()
         var groupID = String()
