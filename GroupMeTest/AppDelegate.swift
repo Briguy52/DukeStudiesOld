@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var ACCESS_TOKEN: String! // This access token belongs to the user and will be used to join or leave groups that have been created already (user will never create a group)
     var ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6" // This access token corresponds to an admin account that we will use to create and track every single group
-    var courseString = "Test1" // Placeholder Course String
+    var courseString = "Test2" // Placeholder Course String
     var sectionNumber = "99" //Placeholder Section Number
     let baseURL = "https://api.groupme.com/v3" // Base String for all GroupMe API calls
     var joinURL = String() // URL for joining (mutable)
@@ -54,7 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ACCESS_TOKEN = queryArray[1]; // should contain ACCESS TOKEN only
         //        print(ACCESS_TOKEN);
         
-        self.checkForOpen(courseString, mySection: sectionNumber)
+//        self.checkForOpen(courseString, mySection: sectionNumber)
+        self.makeSection(courseString, mySection: sectionNumber)
         
         return true;
     }
@@ -207,6 +208,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                                     if (success) {
                                         print("New group has been created and stored.")
+                                        objectID = testObject.objectId!
                                         self.makeString(groupID, shareToken: shareToken, objID: objectID) // Callback function
                                     }
                                     else {
@@ -225,6 +227,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
+    
+    
+    func makeSection(myClass: String, mySection: String){
+        var objectID = String()
+        var groupID = String()
+        var shareToken = String()
+        
+        // Make a new group
+        let parameters: [String: AnyObject] = ["name":myClass, "share":true]
+        Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
+            .responseJSON { response in
+                if let test = response.result.value {
+                    // Code for parsing Group ID
+                    groupID = "\(test["response"]!!["group_id"]!!)"
+                    // Code for parsing Share Token
+                    var shareURL = test["response"]!!["share_url"]!!
+                    var shareArray = shareURL.componentsSeparatedByString("/")
+                    shareToken = shareArray[shareArray.count-1]
+                    
+                    // Add new object to Parse
+                    // CITE: Taken from Parse's quick start tutorial: https://parse.com/apps/quickstart#parse_data/mobile/ios/swift/existing
+                    var testObject = PFObject(className: self.courseString)
+                    testObject["groupID"] = groupID
+                    testObject["shareToken"] = shareToken
+                    testObject["memberCount"] = 1
+                    testObject["sectionNumber"] = mySection
+                    testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            print("New group has been created and stored.")
+                            objectID = testObject.objectId!
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID) // Callback function
+                        }
+                        else {
+                            print("Error has occurred in storing new group")
+                            print(error)
+                        }
+                    }
+                }
+        }
+    }
+    
     
     
     // Prints a String
