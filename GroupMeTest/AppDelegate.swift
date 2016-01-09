@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var ACCESS_TOKEN: String! // This access token belongs to the user and will be used to join or leave groups that have been created already (user will never create a group)
     var ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6" // This access token corresponds to an admin account that we will use to create and track every single group
     var courseString = "Test1" // Placeholder Course String
+    var sectionNumber = "99" //Placeholder Section Number
     let baseURL = "https://api.groupme.com/v3" // Base String for all GroupMe API calls
     var joinURL = String() // URL for joining (mutable)
     
@@ -53,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ACCESS_TOKEN = queryArray[1]; // should contain ACCESS TOKEN only
         //        print(ACCESS_TOKEN);
         
-        self.checkForOpen(courseString)
+        self.checkForOpen(courseString, mySection: sectionNumber)
         
         return true;
     }
@@ -139,15 +140,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Deleting " + groupID)
                 Alamofire.request(.POST, self.baseURL + "/groups/" + groupID + "/destroy?token=" + self.ADMIN_TOKEN) // Delete from Alamofire
             }
-            self.checkForOpen(self.courseString)
+            self.checkForOpen(self.courseString, mySection: self.sectionNumber)
         }
     }
     
     
-    // Helper function for finding open groups
+    // Helper function for finding open groups where the section number already exists
     // Input: Class Name (String)
     // Output: /groups/:id/join/:share_token (String)
-    func checkForOpen(myClass: String) -> Void {
+    func checkForOpen(myClass: String, mySection: String) -> Void {
         var objectID = String()
         var groupID = String()
         var shareToken = String()
@@ -158,6 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Receiving query from Parse")
         var query = PFQuery(className:myClass)
         query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
+        query.whereKey("sectionNumber", equalTo: mySection) //Checks for group matching desired section number
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -171,6 +173,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("Group ID: " + String(object["groupID"]))
                             print("Share Token: " + String(object["shareToken"]))
                             print("Member Count: " + String(object["memberCount"]))
+                            print("Section Number: " + String(object["sectionNumber"]))
                             if object["memberCount"] as! Int > maxMembers {
                                 objectID = object.objectId!
                                 groupID = object["groupID"] as! String
@@ -200,6 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 testObject["groupID"] = groupID
                                 testObject["shareToken"] = shareToken
                                 testObject["memberCount"] = 1
+                                testObject["sectionNumber"] = mySection
                                 testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                                     if (success) {
                                         print("New group has been created and stored.")
