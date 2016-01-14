@@ -49,7 +49,7 @@
         <!--Subject-->
         <scene sceneID="72a-ch-d74">
             <objects>
-                <tableViewController id="7aI-tr-NPE" customClass="SubjectTableViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7aI-tr-NPE" customClass="SubjectTableViewController" customModule="GroupMeTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="7RP-2X-hbp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -100,7 +100,7 @@
         <!--Course-->
         <scene sceneID="e8G-ox-TKn">
             <objects>
-                <tableViewController id="ZUO-Do-XWH" customClass="CourseTableViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ZUO-Do-XWH" customClass="CourseTableViewController" customModule="GroupMeTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZZv-hI-SHb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -145,13 +145,13 @@
         <!--My Study Groups-->
         <scene sceneID="NYv-jh-x1L">
             <objects>
-                <tableViewController id="k40-y4-KAO" customClass="GroupsViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="k40-y4-KAO" customClass="GroupsViewController" customModule="GroupMeTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="160" sectionHeaderHeight="22" sectionFooterHeight="22" id="yb8-Vx-82J">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="groupCell" rowHeight="84" id="9ps-DD-KKY" customClass="GroupsCell" customModule="SwiftParseChat" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="groupCell" rowHeight="84" id="9ps-DD-KKY" customClass="GroupsCell" customModule="GroupMeTest" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="22" width="600" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9ps-DD-KKY" id="QRc-bW-Jgq">
@@ -323,7 +323,7 @@
         <!--New Group-->
         <scene sceneID="G29-74-Ups">
             <objects>
-                <tableViewController id="j8H-qo-uZm" customClass="CreateGroupTableViewController" customModule="SwiftParseChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="j8H-qo-uZm" customClass="CreateGroupTableViewController" customModule="GroupMeTest" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="bWC-d2-7T0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
