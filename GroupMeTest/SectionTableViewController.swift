@@ -15,7 +15,7 @@ import Bolts
 
 class SectionTableViewController: UITableViewController {
     
-    var parseClassString: String! = "Test2" // inherited from Subject and Course VC's, has form "Subject" + " " + "Course Number"
+    var parseClassString: String! // inherited from Subject and Course VC's, has form "Subject" + " " + "Course Number"
     var sectionNumArray = [String]() // array of existing course numbers
     var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
     // Note: Consider implementing the above two arrays as a dictionary instead
@@ -31,7 +31,7 @@ class SectionTableViewController: UITableViewController {
         
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
-        print("Receiving query from Parse")
+//        print("Receiving query from Parse")
         let query = PFQuery(className:parseClassString)
         //      query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
         //      query.whereKey("sectionNumber", equalTo: mySection) //Checks for group matching desired section number
@@ -39,7 +39,7 @@ class SectionTableViewController: UITableViewController {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 // The find succeeded.
-                print("Successfully retrieved \(objects!.count) open groups.")
+//                print("Successfully retrieved \(objects!.count) open groups.")
                 if objects!.count > 0 {
                     
                     // Do something with the found objects
@@ -48,16 +48,16 @@ class SectionTableViewController: UITableViewController {
                             if !self.sectionNumArray.contains(String(object["sectionNumber"]!)){
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
                                 self.sectionProfArray.append(String(object["sectionProf"]!))
-                                print("Object ID: " + object.objectId!)
-                                print("Group ID: " + String(object["groupID"]))
-                                print("Share Token: " + String(object["shareToken"]))
-                                print("Member Count: " + String(object["memberCount"]))
-                                print("Section Number: " + String(object["sectionNumber"]))
-                                print("Section Professor: " + String(object["sectionProf"]))
+//                                print("Object ID: " + object.objectId!)
+//                                print("Group ID: " + String(object["groupID"]))
+//                                print("Share Token: " + String(object["shareToken"]))
+//                                print("Member Count: " + String(object["memberCount"]))
+//                                print("Section Number: " + String(object["sectionNumber"]))
+//                                print("Section Professor: " + String(object["sectionProf"]))
                                 
                             }
                         }
-                        print(self.sectionNumArray)
+//                        print(self.sectionNumArray)
                         self.tableView.reloadData()
                     }
                 }
@@ -112,15 +112,17 @@ class SectionTableViewController: UITableViewController {
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
             print(self.selectedSection)
-            self.performSegueWithIdentifier("subjectToCourseSegue", sender: self)
+            self.performSegueWithIdentifier("sectionToGroupSegue", sender: self)
         }
     }
 
     
     // MARK: - Navigation
     
+    // Should add user to selected group (ie call backend)
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "subjectToCourseSegue" {
+        if segue.identifier == "sectionToGroupSegue" {
             let joinVC = segue.destinationViewController as! ViewController
             //            courseVC.delegate = self.delegate
             //            sectionVC.subject = self.selectedCourse

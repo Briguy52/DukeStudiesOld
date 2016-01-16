@@ -108,7 +108,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
             /* Retrieve course and append subject code and name */
             if let course = self.courses[indexPath.row] as? [String: String] {
                 self.selectedCourse = course
-                parseClassString = parseClassString + " " + course["course_number"]! as String
+                parseClassString = parseClassString + course["course_number"]! as String
                 print(parseClassString)
                 if let code = self.subject["code"] as? String {
                     self.selectedCourse["subject_code"] = code
@@ -136,7 +136,8 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "courseToSectionSegue" {
-            let sectionVC = segue.destinationViewController as! ViewController
+            let sectionVC = segue.destinationViewController as! SectionTableViewController
+            sectionVC.parseClassString = self.parseClassString
             //            courseVC.delegate = self.delegate
             //            sectionVC.subject = self.selectedCourse
             //            sectionVC.courses = self.courses
