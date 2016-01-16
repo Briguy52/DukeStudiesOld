@@ -15,7 +15,7 @@
 
 /* Brian's Key Changes:
 - Comment out all references to 'GroupSelectTableViewControllerDelegate'
-- Replace courseToGroupSegue with subjectToCourseSegue (since we still need to segue to section selection)
+- Replace courseToGroupSegue with courseToSectionSegue (since we still need to segue to section selection)
 */
 
 import UIKit
@@ -101,7 +101,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
                     self.selectedCourse["subject_desc"] = desc
                 }
                 
-                self.performSegueWithIdentifier("subjectToCourseSegue", sender: self)
+                self.performSegueWithIdentifier("courseToSectionSegue", sender: self)
             }
         }
         else {
@@ -117,7 +117,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
                     self.selectedCourse["subject_desc"] = desc
                 }
                 
-                self.performSegueWithIdentifier("subjectToCourseSegue", sender: self)
+                self.performSegueWithIdentifier("courseToSectionSegue", sender: self)
             }
         }
     }
@@ -135,7 +135,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "subjectToCourseSegue" {
+        if segue.identifier == "courseToSectionSegue" {
             let sectionVC = segue.destinationViewController as! ViewController
             //            courseVC.delegate = self.delegate
             //            sectionVC.subject = self.selectedCourse

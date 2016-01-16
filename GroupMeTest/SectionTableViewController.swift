@@ -15,24 +15,16 @@ import Bolts
 
 class SectionTableViewController: UITableViewController {
     
-    var subject: NSDictionary!
-    var courses: NSArray!
-    //    var delegate: GroupSelectTableViewControllerDelegate!
-    //    var selectedCourse: [String: String]
-    //    var filteredCourses: NSArray!
-    //    var searchController: UISearchController!
-    var parseClassString: String! = "Test2"
-    var sectionNumArray = [String]()
-//    var sectionNumArray = ["3","2"]
-    var selectedSection: String!
+    var parseClassString: String! = "Test2" // inherited from Subject and Course VC's, has form "Subject" + " " + "Course Number"
+    var sectionNumArray = [String]() // array of existing course numbers
+    var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
+    // Note: Consider implementing the above two arrays as a dictionary instead
+    var selectedSection: String! // section selected by user
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        if let subjectCode = subject["code"] as? String {
-        //            self.navigationItem.title? = subjectCode
-        //        }
-        
+        // Init Parse
         Parse.setApplicationId("jy4MUG3yk2hLkU7NVTRRwQx1p5siV9BPwjr3410A",
             clientKey: "crnLPudofSLV9LmmydyAl2Eb8sJmlHi4Pd6HNtxW")
         
@@ -40,7 +32,7 @@ class SectionTableViewController: UITableViewController {
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
         print("Receiving query from Parse")
-        var query = PFQuery(className:parseClassString)
+        let query = PFQuery(className:parseClassString)
         //      query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
         //      query.whereKey("sectionNumber", equalTo: mySection) //Checks for group matching desired section number
         query.findObjectsInBackgroundWithBlock {
@@ -55,6 +47,7 @@ class SectionTableViewController: UITableViewController {
                         for object in objects {
                             if !self.sectionNumArray.contains(String(object["sectionNumber"]!)){
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
+                                self.sectionProfArray.append(String(object["sectionProf"]!))
                                 print("Object ID: " + object.objectId!)
                                 print("Group ID: " + String(object["groupID"]))
                                 print("Share Token: " + String(object["shareToken"]))
@@ -92,14 +85,19 @@ class SectionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        print("populating table")
 //        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         
+        // Note: UITableViewCellStyle.Default DOES NOT allow for subtitles!
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
+        // Print Class + Course + Section
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             cell.textLabel?.text = String(self.parseClassString + " " + sectionNum)
-            cell.detailTextLabel?.text = sectionNum
+        }
+        
+        // Print Subtitle
+        if let sectionProf = self.sectionProfArray[indexPath.row] as? String {
+            cell.detailTextLabel?.text = String(sectionProf)
         }
         
         return cell
