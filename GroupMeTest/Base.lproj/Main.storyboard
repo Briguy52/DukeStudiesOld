@@ -93,7 +93,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="ZUO-Do-XWH" kind="show" id="785-s6-Md2"/>
+                        <segue destination="ZUO-Do-XWH" kind="show" identifier="subjectToCourseSegue" id="785-s6-Md2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Bl-ci-lVK" userLabel="First Responder" sceneMemberID="firstResponder"/>

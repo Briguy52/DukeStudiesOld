@@ -33,7 +33,6 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let subjectCode = subject["code"] as? String {
             self.navigationItem.title? = subjectCode
         }
@@ -94,6 +93,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
             /* Retrieve course and append subject code and name */
             if let course = self.filteredCourses[indexPath.row] as? [String: String] {
                 self.selectedCourse = course
+                parseClassString = parseClassString + " " + course["course_number"]! as String
                 if let code = self.subject["code"] as? String {
                     self.selectedCourse["subject_code"] = code
                 }
@@ -108,6 +108,8 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
             /* Retrieve course and append subject code and name */
             if let course = self.courses[indexPath.row] as? [String: String] {
                 self.selectedCourse = course
+                parseClassString = parseClassString + " " + course["course_number"]! as String
+                print(parseClassString)
                 if let code = self.subject["code"] as? String {
                     self.selectedCourse["subject_code"] = code
                 }

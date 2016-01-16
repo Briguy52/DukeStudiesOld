@@ -18,8 +18,6 @@
 - Add new String var to store desired Parse class
 */
 
-// Test 2
-
 import UIKit
 
 class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
@@ -113,7 +111,8 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.searchController.active {
             if let subject = self.filteredSubjects[indexPath.row] as? NSDictionary {
-                print(subject)
+                print("filtered")
+                parseClassString = subject["code"]! as! String
                 if let courses = subject["courses"] as? NSArray {
                     self.selectedSubject = subject
                     self.courses = courses
@@ -123,6 +122,8 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }
         else {
             if let subject = self.subjects[indexPath.row] as? NSDictionary {
+                print("unfiltered")
+                parseClassString = subject["code"]! as! String
                 if let courses = subject["courses"] as? NSArray {
                     self.selectedSubject = subject
                     self.courses = courses
@@ -136,8 +137,10 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "subjectToCourseSegue" {
+            print("Segue call received") 
             let courseVC = segue.destinationViewController as! CourseTableViewController
             //            courseVC.delegate = self.delegate
+            courseVC.parseClassString = self.parseClassString
             courseVC.subject = self.selectedSubject
             courseVC.courses = self.courses
         }
