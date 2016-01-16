@@ -111,7 +111,6 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if self.searchController.active {
             if let subject = self.filteredSubjects[indexPath.row] as? NSDictionary {
-                print("filtered")
                 parseClassString = subject["code"]! as! String
                 if let courses = subject["courses"] as? NSArray {
                     self.selectedSubject = subject
@@ -122,7 +121,6 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         }
         else {
             if let subject = self.subjects[indexPath.row] as? NSDictionary {
-                print("unfiltered")
                 parseClassString = subject["code"]! as! String
                 if let courses = subject["courses"] as? NSArray {
                     self.selectedSubject = subject
@@ -137,7 +135,6 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "subjectToCourseSegue" {
-            print("Segue call received") 
             let courseVC = segue.destinationViewController as! CourseTableViewController
             //            courseVC.delegate = self.delegate
             courseVC.parseClassString = self.parseClassString
