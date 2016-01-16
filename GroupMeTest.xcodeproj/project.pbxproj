@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		6C2EB86DC8CBAC913D19023B /* Pods_GroupMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08F12E6611C22D6E494E2E9 /* Pods_GroupMeTest.framework */; };
 		6DE5D28D0CDD4DB2B2B7AA0B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24914A70891FD3EC4FD773B /* Pods.framework */; };
+		AF2387641C49E3A000C61BE9 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */; };
+		AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */; };
 		AFCD8AB71C210B4D00A4A0EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */; };
 		AFCD8AB91C210B4D00A4A0EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */; };
 		AFCD8ABC1C210B4D00A4A0EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFCD8ABA1C210B4D00A4A0EB /* Main.storyboard */; };
 		AFCD8ABE1C210B4D00A4A0EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFCD8ABD1C210B4D00A4A0EB /* Assets.xcassets */; };
 		AFCD8AC11C210B4D00A4A0EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFCD8ABF1C210B4D00A4A0EB /* LaunchScreen.storyboard */; };
+		AFE3D0A81C47E96000B455B0 /* courses.json in Resources */ = {isa = PBXBuildFile; fileRef = AFE3D0A71C47E96000B455B0 /* courses.json */; };
 		D372CE681C39EE1000BD1732 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D372CE671C39EE1000BD1732 /* AudioToolbox.framework */; };
 		D372CE6A1C39EE1700BD1732 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D372CE691C39EE1700BD1732 /* CFNetwork.framework */; };
 		D372CE6C1C39EE1F00BD1732 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D372CE6B1C39EE1F00BD1732 /* CoreGraphics.framework */; };
@@ -28,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		14B7A4995F7B2F9B1339254E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
+		AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		AFCD8AB31C210B4D00A4A0EB /* GroupMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +40,7 @@
 		AFCD8ABD1C210B4D00A4A0EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFCD8AC01C210B4D00A4A0EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AFCD8AC21C210B4D00A4A0EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFE3D0A71C47E96000B455B0 /* courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = courses.json; path = "../../Duke-Study-Group/SwiftParseChat/courses.json"; sourceTree = "<group>"; };
 		B08F12E6611C22D6E494E2E9 /* Pods_GroupMeTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GroupMeTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFEE06621C52905736CF02B5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D372CE671C39EE1000BD1732 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -122,12 +128,15 @@
 		AFCD8AB51C210B4D00A4A0EB /* GroupMeTest */ = {
 			isa = PBXGroup;
 			children = (
+				AFE3D0A71C47E96000B455B0 /* courses.json */,
 				AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */,
 				AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */,
 				AFCD8ABA1C210B4D00A4A0EB /* Main.storyboard */,
 				AFCD8ABD1C210B4D00A4A0EB /* Assets.xcassets */,
 				AFCD8ABF1C210B4D00A4A0EB /* LaunchScreen.storyboard */,
 				AFCD8AC21C210B4D00A4A0EB /* Info.plist */,
+				AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */,
+				AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */,
 			);
 			path = GroupMeTest;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE3D0A81C47E96000B455B0 /* courses.json in Resources */,
 				AFCD8AC11C210B4D00A4A0EB /* LaunchScreen.storyboard in Resources */,
 				AFCD8ABE1C210B4D00A4A0EB /* Assets.xcassets in Resources */,
 				AFCD8ABC1C210B4D00A4A0EB /* Main.storyboard in Resources */,
@@ -253,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF2387641C49E3A000C61BE9 /* SubjectTableViewController.swift in Sources */,
 				AFCD8AB91C210B4D00A4A0EB /* ViewController.swift in Sources */,
+				AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */,
 				AFCD8AB71C210B4D00A4A0EB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
