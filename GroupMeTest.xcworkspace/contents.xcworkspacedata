@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GroupMeTest/courses.json">
+   </FileRef>
+   <FileRef
       location = "group:GroupMeTest.xcodeproj">
    </FileRef>
    <FileRef
