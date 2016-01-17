@@ -138,6 +138,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
         if segue.identifier == "subjectToCourseSegue" {
             let courseVC = segue.destinationViewController as! CourseTableViewController
             //            courseVC.delegate = self.delegate
+            courseVC.selectedSubjectString = self.parseClassString
             courseVC.parseClassString = self.parseClassString
             courseVC.subject = self.selectedSubject
             courseVC.courses = self.courses

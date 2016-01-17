@@ -25,6 +25,8 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     var subject: NSDictionary!
     var courses: NSArray!
     //    var delegate: GroupSelectTableViewControllerDelegate!
+    var selectedSubjectString: String! // to be displayed in SectionVC
+    var selectedCourseString: String! // to be displayed in SectionVC
     var selectedCourse: [String: String]!
     
     var filteredCourses: NSArray!
@@ -109,6 +111,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
             /* Retrieve course and append subject code and name */
             if let course = self.courses[indexPath.row] as? [String: String] {
                 self.selectedCourse = course
+                self.selectedCourseString = course["course_number"]! as String
                 parseClassString = parseClassString + course["course_number"]! as String
                 print(parseClassString)
                 if let code = self.subject["code"] as? String {
@@ -138,6 +141,8 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "courseToSectionSegue" {
             let sectionVC = segue.destinationViewController as! SectionTableViewController
+            sectionVC.selectedCourseString = self.selectedCourseString
+            sectionVC.selectedSubjectString = self.selectedSubjectString
             sectionVC.parseClassString = self.parseClassString
             //            courseVC.delegate = self.delegate
             //            sectionVC.subject = self.selectedCourse

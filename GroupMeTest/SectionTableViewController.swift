@@ -18,7 +18,10 @@ class SectionTableViewController: UITableViewController {
     var parseClassString: String! // inherited from Subject and Course VC's, has form "Subject" + " " + "Course Number"
     var sectionNumArray = [String]() // array of existing course numbers
     var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
+    
     // Note: Consider implementing the above two arrays as a dictionary instead
+    var selectedSubjectString: String! // to be displayed in cell title
+    var selectedCourseString: String! // to be displayed in cell title
     var selectedSection: String! // section selected by user
     
     override func viewDidLoad() {
@@ -93,7 +96,7 @@ class SectionTableViewController: UITableViewController {
         
         // Print Class + Course + Section
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
-            cell.textLabel?.text = String(self.parseClassString + " " + sectionNum)
+            cell.textLabel?.text = String(self.selectedSubjectString + " " + self.selectedCourseString + " " + "Section: " + sectionNum)
         }
         
         // Print Subtitle
