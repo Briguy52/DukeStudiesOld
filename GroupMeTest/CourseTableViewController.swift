@@ -33,6 +33,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         if let subjectCode = subject["code"] as? String {
             self.navigationItem.title? = subjectCode
         }

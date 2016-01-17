@@ -35,6 +35,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
         
         if let path = NSBundle.mainBundle().pathForResource("courses", ofType: "json") {
             if let jsonData = NSData.dataWithContentsOfMappedFile(path) as? NSData {
