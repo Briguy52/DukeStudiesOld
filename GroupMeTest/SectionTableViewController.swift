@@ -34,7 +34,7 @@ class SectionTableViewController: UITableViewController {
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
 //        print("Receiving query from Parse")
         let query = PFQuery(className:parseClassString)
-        //      query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
+              query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
         //      query.whereKey("sectionNumber", equalTo: mySection) //Checks for group matching desired section number
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -46,7 +46,7 @@ class SectionTableViewController: UITableViewController {
                     // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
-                            if !self.sectionNumArray.contains(String(object["sectionNumber"]!)){
+//                            if !self.sectionNumArray.contains(String(object["sectionNumber"]!)){
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
                                 self.sectionProfArray.append(String(object["sectionProf"]!))
 //                                print("Object ID: " + object.objectId!)
@@ -56,7 +56,7 @@ class SectionTableViewController: UITableViewController {
 //                                print("Section Number: " + String(object["sectionNumber"]))
 //                                print("Section Professor: " + String(object["sectionProf"]))
                                 
-                            }
+//                            }
                         }
 //                        print(self.sectionNumArray)
                         self.tableView.reloadData()
