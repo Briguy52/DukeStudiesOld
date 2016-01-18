@@ -5,18 +5,7 @@
 //  Created by Brian Lin on 1/15/16.
 //  Copyright © 2016 Brian Lin. All rights reserved.
 //
-//
-//  CourseTableViewController.swift
-//  SwiftParseChat
-//
-//  Created by Jesse Hu on 3/9/15.
-//  Copyright (c) 2015 Jesse Hu. All rights reserved.
-//
-
-/* Brian's Key Changes:
-- Comment out all references to 'GroupSelectTableViewControllerDelegate'
-- Replace courseToGroupSegue with courseToSectionSegue (since we still need to segue to section selection)
-*/
+//  Based heavily on Jesse Hu's code of the same name
 
 import UIKit
 
@@ -24,7 +13,6 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     var subject: NSDictionary!
     var courses: NSArray!
-    //    var delegate: GroupSelectTableViewControllerDelegate!
     var selectedSubjectString: String! // to be displayed in SectionVC
     var selectedCourseString: String! // to be displayed in SectionVC
     var selectedCourse: [String: String]!
@@ -125,16 +113,6 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
             }
         }
     }
-    
-    // MARK: - Navigation
-    
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        if segue.identifier == "courseToGroupsSegue" {
-    //            let groupSelectVC = segue.destinationViewController as! GroupSelectTableViewController
-    //            groupSelectVC.delegate = self.delegate
-    //            groupSelectVC.course = self.selectedCourse
-    //        }
-    //    }
     
     // MARK: - Navigation
     

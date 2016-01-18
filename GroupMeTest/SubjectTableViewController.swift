@@ -5,18 +5,9 @@
 //  Created by Brian Lin on 1/15/16.
 //  Copyright © 2016 Brian Lin. All rights reserved.
 //
-//
-//  SubjectTableViewController.swift
-//  SwiftParseChat
-//
-//  Created by Jesse Hu on 3/9/15.
-//  Copyright (c) 2015 Jesse Hu. All rights reserved.
-//
+//  Based heavily on Jesse Hu's code of the same name
 
-/* Brian's Key Changes:
-- Comment out all references to 'GroupSelectTableViewControllerDelegate'
-- Add new String var to store desired Parse class
-*/
+
 
 import UIKit
 
@@ -24,9 +15,7 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     
     var subjects: NSArray!
     var courses: NSArray!
-    //    var delegate: GroupSelectTableViewControllerDelegate!
-    var selectedSubject: NSDictionary!
-    
+    var selectedSubject: NSDictionary!    
     var filteredSubjects: NSArray!
     var searchController: UISearchController!
     var parseClassString: String!
