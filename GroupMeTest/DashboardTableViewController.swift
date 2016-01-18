@@ -21,7 +21,7 @@ class DashboardTableViewController: UITableViewController{
     var classNameArray = [String]() // to display as title
     var sectionNumberArray = [String]() // to display in title
     var profNameArray = [String]() // to display as description
-    var groupMeIDArray =  [String]() // for deeplinking to GroupMe app
+    var groupIDArray =  [String]() // for deeplinking to GroupMe app
     
     
     override func viewDidLoad() {
@@ -43,14 +43,18 @@ class DashboardTableViewController: UITableViewController{
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-//                     print("Successfully retrieved \(objects!.count) open groups.")
+                     print("Successfully retrieved \(objects!.count) open groups.")
                     if objects!.count > 0 {
                         
                         // Do something with the found objects
                         if let objects = objects {
                             for object in objects {
                                 if objID == object.objectId {
-                                    print(object.objectID) 
+                                    print(object.objectId!)
+                                    print(String(object["sectionProf"]))
+                                    self.sectionNumberArray.append(String(object["sectionNumber"]))
+                                    self.profNameArray.append(String(object["sectionProf"]))
+                                    self.groupIDArray.append(String(object["groupID"]))
                                 }
                             }
                             self.tableView.reloadData()
@@ -61,7 +65,7 @@ class DashboardTableViewController: UITableViewController{
         }
         
         //        self.definesPresentationContext = true;
-        self.tableView.reloadData()
+//        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,7 +87,7 @@ class DashboardTableViewController: UITableViewController{
         
         print(classNameArray.count)
         print(profNameArray.count)
-        print(groupMeIDArray.count)
+        print(groupIDArray.count)
         if let groupName = self.classNameArray[indexPath.row] as? String {
             cell.textLabel?.text = String(groupName)
         }

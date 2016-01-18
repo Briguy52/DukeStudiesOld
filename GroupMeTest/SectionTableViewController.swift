@@ -35,10 +35,8 @@ class SectionTableViewController: UITableViewController {
         
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
-//        print("Receiving query from Parse")
         let query = PFQuery(className:parseClassString)
               query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
-        //      query.whereKey("sectionNumber", equalTo: mySection) //Checks for group matching desired section number
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -49,19 +47,9 @@ class SectionTableViewController: UITableViewController {
                     // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
-//                            if !self.sectionNumArray.contains(String(object["sectionNumber"]!)){
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
                                 self.sectionProfArray.append(String(object["sectionProf"]!))
-//                                print("Object ID: " + object.objectId!)
-//                                print("Group ID: " + String(object["groupID"]))
-//                                print("Share Token: " + String(object["shareToken"]))
-//                                print("Member Count: " + String(object["memberCount"]))
-//                                print("Section Number: " + String(object["sectionNumber"]))
-//                                print("Section Professor: " + String(object["sectionProf"]))
-                                
-//                            }
                         }
-//                        print(self.sectionNumArray)
                         self.tableView.reloadData()
                     }
                 }
@@ -69,7 +57,6 @@ class SectionTableViewController: UITableViewController {
         }
         
         self.definesPresentationContext = true;
-//        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,17 +66,14 @@ class SectionTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        print("num sections")
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        print("num of rows")
         return self.sectionNumArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
         
         // Note: UITableViewCellStyle.Default DOES NOT allow for subtitles!
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
