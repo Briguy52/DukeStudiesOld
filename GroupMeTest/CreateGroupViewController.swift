@@ -91,12 +91,13 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func createGroupPressed(sender: UIButton) {
-//    @IBAction func createGroupPressed(sender: AnyObject) {
+    @IBAction func createGroupPressed(sender: AnyObject) {
         let profName = profField.text //good
         
         if count(profName) > 0 {
             // make Create Group backend call here
+            
+            // segue to Dashboard here
         } else {
             HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
             return
