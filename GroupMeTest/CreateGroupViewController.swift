@@ -15,7 +15,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
     // Put IBOutlet vars below
     @IBOutlet weak var profField: UITextField!
-    
+    @IBOutlet weak var sectionNum: UITextField!
     
     // Put other vars below
     var noneSelected = true
@@ -24,20 +24,9 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     var course: [String: String]!
 //    var delegate: GroupSelectTableViewControllerDelegate!
     
-//    @IBOutlet var courseLabel: UILabel!
-//    @IBOutlet var groupNameField: UITextField!
-//    @IBOutlet var descriptionField: UITextField!
-//    @IBOutlet var locationField: UITextField!
-    
-//    @IBOutlet var dateTimeCell: UITableViewCell!
-//    @IBOutlet var datePicker: UIDatePicker!
-//    @IBOutlet var datePickerCell: UITableViewCell!
-//    @IBOutlet var dateButton: UIButton!
-//    @IBOutlet var noneButton: UIButton!
-    
-    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var sectionPicker: UIPickerView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +53,20 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
 //        dateTimePressed()
 //    }
     
+    @IBAction func createButtonPressed(sender: AnyObject) {
+        let profName = profField.text
+        let sectionNumber = sectionNum.text
+        
+        if count(profName) > 0 {
+            // make Create Group backend call here
+            
+            // segue to Dashboard here
+        } else {
+            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
+            return
+        }
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
 //    func dateTimePressed() {
@@ -87,23 +90,23 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
 //        self.view.endEditing(true)
 //    }
     
-    @IBAction func cancelPressed(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    @IBAction func createGroupPressed(sender: AnyObject) {
-        let profName = profField.text //good
-        
-        if count(profName) > 0 {
-            // make Create Group backend call here
-            
-            // segue to Dashboard here
-        } else {
-            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-            return
-        }
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
+//    @IBAction func cancelPressed(sender: AnyObject) {
+//        self.navigationController?.popViewControllerAnimated(true)
+//    }
+//    
+//    @IBAction func createGroupPressed(sender: AnyObject) {
+//        let profName = profField.text //good
+//        
+//        if count(profName) > 0 {
+//            // make Create Group backend call here
+//            
+//            // segue to Dashboard here
+//        } else {
+//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
+//            return
+//        }
+//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     // MARK: - UITextFieldDelegate
     
