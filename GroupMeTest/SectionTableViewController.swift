@@ -132,5 +132,10 @@ class SectionTableViewController: UITableViewController {
             //            sectionVC.subject = self.selectedCourse
             //            sectionVC.courses = self.courses
         }
+        if segue.identifier == "createGroupSegue" {
+            let createVC = segue.destinationViewController as! CreateGroupViewController
+            createVC.selectedCourseString = self.selectedCourseString
+            createVC.selectedSubjectString = self.selectedSubjectString
+        }
     }
 }

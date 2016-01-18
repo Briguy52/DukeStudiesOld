@@ -14,14 +14,19 @@ import UIKit
 class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
     // Put IBOutlet vars below
+   
     @IBOutlet weak var profField: UITextField!
-    @IBOutlet weak var sectionNum: UITextField!
+    @IBOutlet weak var sectionField: UITextField!
+    
+    
     
     // Put other vars below
     var noneSelected = true
     var expanded = false
+    var selectedSubjectString: String!
+    var selectedCourseString: String!
     
-    var course: [String: String]!
+//    var course: [String: String]!
 //    var delegate: GroupSelectTableViewControllerDelegate!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -32,10 +37,6 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
-//        self.courseLabel.text = self.course["course_name"]
-//        self.noneButton.highlighted = true
-//        self.datePicker.addTarget(self, action: "datePickerChanged:", forControlEvents: UIControlEvents.ValueChanged)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,24 +50,21 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-//    @IBAction func dateButtonPressed(sender: UIButton) {
-//        dateTimePressed()
+
+//    @IBAction func createButtonPressed(sender: AnyObject) {
+//        let profName = profField.text
+//        let sectionNumber = sectionField.text
+//        
+//        if count(profName) > 0 {
+//            // make Create Group backend call here
+//            
+//            // segue to Dashboard here
+//        } else {
+//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
+//            return
+//        }
+//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
 //    }
-    
-    @IBAction func createButtonPressed(sender: AnyObject) {
-        let profName = profField.text
-        let sectionNumber = sectionNum.text
-        
-        if count(profName) > 0 {
-            // make Create Group backend call here
-            
-            // segue to Dashboard here
-        } else {
-            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-            return
-        }
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     
 //    func dateTimePressed() {
@@ -77,18 +75,9 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
 //        self.view.endEditing(true)
 //    }
     
-//    func datePickerChanged(datePicker: UIDatePicker) {
-//        dateTimePressed()
-//        self.dateButton.setTitle(Utilities.getFormattedTextFromDate(datePicker.date), forState: UIControlState.Normal)
-//    }
+
     
-//    @IBAction func noneButtonPressed(sender: UIButton) {
-//        self.noneSelected = true
-//        self.dateButton.highlighted = true
-//        self.dateButton.titleLabel?.alpha = 0.25
-//        self.datePicker.alpha = 0.25
-//        self.view.endEditing(true)
-//    }
+
     
 //    @IBAction func cancelPressed(sender: AnyObject) {
 //        self.navigationController?.popViewControllerAnimated(true)
@@ -111,13 +100,14 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if textField == self.groupNameField {
-            self.descriptionField.becomeFirstResponder()
-        } else if textField == self.descriptionField {
-            self.locationField.becomeFirstResponder()
-        } else if textField == self.locationField {
-            self.view.endEditing(true)
+        if textField == self.profField {
+            self.profField.becomeFirstResponder()
+        } else if textField == self.sectionField {
+            self.sectionField.becomeFirstResponder()
         }
+//        else if textField == self.locationField {
+//            self.view.endEditing(true)
+//        }
         return true
     }
     
