@@ -22,9 +22,7 @@ class DashboardTableViewController: UITableViewController{
     var sectionNumberArray = [String]() // to display in title
     var profNameArray = [String]() // to display as description
     var groupIDArray =  [String]() // for deeplinking to GroupMe app
-    var testInt = 1
-    var reachedEnd = false
-    
+    var selectedGroup: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,31 +84,30 @@ class DashboardTableViewController: UITableViewController{
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
-//        print("tableView call: " + String(testInt))
-//        testInt++
-//        print("classNameArray size: " + String(classNameArray.count))
-//        print("profNameArray size: " + String(profNameArray.count))
+
         if let groupName = self.classNameArray[indexPath.row] as? String {
             cell.textLabel?.text = String(groupName)
         }
+        
         if let sectionProf = self.profNameArray[indexPath.row] as? String {
             cell.detailTextLabel?.text = String(sectionProf)
         }
+        
         return cell
     }
     
     // MARK: - Table view delegate
     
-    //When you actually pick a group
-    //    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    //
-    //            /* Retrieve course and append subject code and name */
-    //        
-    //                
-    //            self.performSegueWithIdentifier("courseToSectionSegue", sender: self)
-    //        }
-    //    }
+        override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            
+            // Open group in GroupMe app with: groupme://g/{group_id}
+            if let groupID = self.groupIDArray[indexPath.row] as? String {
+                let deepLink = NSURL(string: "groupme://g/" + groupID)
+                UIApplication.sharedApplication().openURL(deepLink!)
+            }
+
+        }
 }
 
 
