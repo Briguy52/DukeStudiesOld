@@ -36,8 +36,13 @@ class Backend {
     //  Creating a new group
     // ---------------------
     
+    // Called by: CreateGroupViewController.swift
+    
     // Helper function to make a new group when section doesn't exist
-    // Inputs: course name, course section
+    // Inputs: 
+    //    1) Course String - from inherited global variable
+    //    2) Section Number String - from text field
+    //    3) Professor Name String - from text field
     func makeSection(myCourse: String, mySection: String, myProf: String){
         var objectID = String()
         var groupID = String()
@@ -82,7 +87,8 @@ class Backend {
     // --------------------------
     //  Joining an existing group
     // --------------------------
-   
+    
+    // Called by: SectionTableViewController.swift
     
     // Creates a joinURL to join a group
     // Make nested call to joinGroup
