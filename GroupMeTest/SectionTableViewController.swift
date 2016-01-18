@@ -116,7 +116,7 @@ class SectionTableViewController: UITableViewController {
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
             print(self.selectedSection)
-            self.performSegueWithIdentifier("sectionToGroupSegue", sender: self)
+            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
         }
     }
 
@@ -126,8 +126,8 @@ class SectionTableViewController: UITableViewController {
     // Should add user to selected group (ie call backend)
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sectionToGroupSegue" {
-            let joinVC = segue.destinationViewController as! ViewController
+        if segue.identifier == "sectionToDashSegue" {
+            let dashVC = segue.destinationViewController as! DashboardTableViewController
             //            courseVC.delegate = self.delegate
             //            sectionVC.subject = self.selectedCourse
             //            sectionVC.courses = self.courses

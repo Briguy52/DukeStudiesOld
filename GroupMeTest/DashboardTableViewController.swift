@@ -1,5 +1,5 @@
 //
-//  GroupTableViewController.swift
+//  DashboardTableViewController.swift
 //
 //
 //  Created by Cody Li on 1/16/16.
@@ -12,15 +12,18 @@ import Alamofire
 import Parse
 import Bolts
 
-class GroupTableViewController: UITableViewController{
+class DashboardTableViewController: UITableViewController{
     
     //Test material
     var classObjectMap:[String: String] = ["AAAS89S": "QOby6lGz9d", "MATH212": "FqG4iWZKAh"]
     
-    var classNameArray = [String]()
-    //    var sectionNumberArray = [String]()
-    var profNameArray = [String]()
-    var groupMeIDArray =  [String]()
+    // Arrays to fill from Parse query response
+    var classNameArray = [String]() // to display as title
+    var sectionNumberArray = [String]() // to display in title
+    var profNameArray = [String]() // to display as description
+    var groupMeIDArray =  [String]() // for deeplinking to GroupMe app
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
@@ -32,9 +35,6 @@ class GroupTableViewController: UITableViewController{
         
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
-        //        print("Receiving query from Parse")
-        //        let query = PFQuery(className:parseClassString)
-        //        print(classObjectMap["AAAS89S"])
         for (courseName, objID) in classObjectMap{
             
             let query = PFQuery(className: courseName)
@@ -43,20 +43,14 @@ class GroupTableViewController: UITableViewController{
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                    // print("Successfully retrieved \(objects!.count) open groups.")
+//                     print("Successfully retrieved \(objects!.count) open groups.")
                     if objects!.count > 0 {
                         
                         // Do something with the found objects
                         if let objects = objects {
                             for object in objects {
                                 if objID == object.objectId {
-                                    //                                    self.sectionNumberArray.append(String(object["sectionNumber"]!))
-                                    
-                                    //                                    print(String(object["sectionNumber"]))
-                                    self.profNameArray.append(String(object["sectionProf"]!))
-                                    //                                    print(String(object["sectionProf"]))
-                                    self.groupMeIDArray.append(String(object["groupID"]!))
-                                    //                                    print(String(object["groupID"]))
+                                    print(object.objectID) 
                                 }
                             }
                             self.tableView.reloadData()
