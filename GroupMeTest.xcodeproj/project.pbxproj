@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		631468BE1C4C7F57004E252A /* DashboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631468BD1C4C7F57004E252A /* DashboardTableViewController.swift */; };
 		637FAD1B1C49EEF90058783F /* SectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FAD1A1C49EEF90058783F /* SectionTableViewController.swift */; };
 		6C2EB86DC8CBAC913D19023B /* Pods_GroupMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08F12E6611C22D6E494E2E9 /* Pods_GroupMeTest.framework */; };
 		6DE5D28D0CDD4DB2B2B7AA0B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24914A70891FD3EC4FD773B /* Pods.framework */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		14B7A4995F7B2F9B1339254E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		631468BD1C4C7F57004E252A /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
 		637FAD1A1C49EEF90058783F /* SectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTableViewController.swift; sourceTree = "<group>"; };
 		AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */,
 				AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */,
 				637FAD1A1C49EEF90058783F /* SectionTableViewController.swift */,
+				631468BD1C4C7F57004E252A /* DashboardTableViewController.swift */,
 				AF78580A1C4B23080072A821 /* CreateGroupViewController.swift */,
 			);
 			path = GroupMeTest;
@@ -276,6 +279,7 @@
 				AF2387641C49E3A000C61BE9 /* SubjectTableViewController.swift in Sources */,
 				AF78580B1C4B23080072A821 /* CreateGroupViewController.swift in Sources */,
 				AFCD8AB91C210B4D00A4A0EB /* ViewController.swift in Sources */,
+				631468BE1C4C7F57004E252A /* DashboardTableViewController.swift in Sources */,
 				AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */,
 				AFCD8AB71C210B4D00A4A0EB /* AppDelegate.swift in Sources */,
 				AF78580D1C4B2F850072A821 /* BackEndMethods.swift in Sources */,
