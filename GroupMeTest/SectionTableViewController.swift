@@ -24,6 +24,8 @@ class SectionTableViewController: UITableViewController {
     var selectedCourseString: String! // to be displayed in cell title
     var selectedSection: String! // section selected by user
     
+    var testInt = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
@@ -36,7 +38,7 @@ class SectionTableViewController: UITableViewController {
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
         let query = PFQuery(className:parseClassString)
-              query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
+        query.whereKey("memberCount", lessThan: 7) // Max size pre add is 7 including Admin account
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -47,6 +49,7 @@ class SectionTableViewController: UITableViewController {
                     // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
+//                                print(String(object["sectionNumber"]!))
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
                                 self.sectionProfArray.append(String(object["sectionProf"]!))
                         }
@@ -78,12 +81,15 @@ class SectionTableViewController: UITableViewController {
         // Note: UITableViewCellStyle.Default DOES NOT allow for subtitles!
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-        // Print Class + Course + Section
+//        print("tableView call: " + String(testInt))
+//        testInt++
+        
+        // Display Class + Course + Section
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             cell.textLabel?.text = String(self.selectedSubjectString + " " + self.selectedCourseString + " " + "Section: " + sectionNum)
         }
         
-        // Print Subtitle
+        // Display Subtitle
         if let sectionProf = self.sectionProfArray[indexPath.row] as? String {
             cell.detailTextLabel?.text = String(sectionProf)
         }
@@ -99,7 +105,6 @@ class SectionTableViewController: UITableViewController {
         /* Retrieve course and append subject code and name */
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
-            print(self.selectedSection)
             self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
         }
     }

@@ -22,6 +22,8 @@ class DashboardTableViewController: UITableViewController{
     var sectionNumberArray = [String]() // to display in title
     var profNameArray = [String]() // to display as description
     var groupIDArray =  [String]() // for deeplinking to GroupMe app
+    var testInt = 1
+    var reachedEnd = false
     
     
     override func viewDidLoad() {
@@ -38,24 +40,21 @@ class DashboardTableViewController: UITableViewController{
         for (courseName, objID) in classObjectMap{
             
             let query = PFQuery(className: courseName)
-            self.classNameArray.append(courseName)
+            query.whereKey("objectId", equalTo: objID) // Checks for group matching desired section number
             query.findObjectsInBackgroundWithBlock {
                 (objects: [PFObject]?, error: NSError?) -> Void in
                 if error == nil {
                     // The find succeeded.
-                     print("Successfully retrieved \(objects!.count) open groups.")
                     if objects!.count > 0 {
-                        
                         // Do something with the found objects
                         if let objects = objects {
                             for object in objects {
-                                if objID == object.objectId {
-                                    print(object.objectId!)
-                                    print(String(object["sectionProf"]))
+//                                    print("Object ID: " + String(object.objectId!))
+//                                    print(String(object["sectionProf"]))
+                                    self.classNameArray.append(courseName)
                                     self.sectionNumberArray.append(String(object["sectionNumber"]))
                                     self.profNameArray.append(String(object["sectionProf"]))
                                     self.groupIDArray.append(String(object["groupID"]))
-                                }
                             }
                             self.tableView.reloadData()
                         }
@@ -64,8 +63,10 @@ class DashboardTableViewController: UITableViewController{
             }
         }
         
-        //        self.definesPresentationContext = true;
-//        self.tableView.reloadData()
+        self.definesPresentationContext = true;
+//        if self.profNameArray.count == self.classObjectMap.count{
+//            self.tableView.reloadData()
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -83,15 +84,15 @@ class DashboardTableViewController: UITableViewController{
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-        print(classNameArray.count)
-        print(profNameArray.count)
-        print(groupIDArray.count)
+        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+//        print("tableView call: " + String(testInt))
+//        testInt++
+//        print("classNameArray size: " + String(classNameArray.count))
+//        print("profNameArray size: " + String(profNameArray.count))
         if let groupName = self.classNameArray[indexPath.row] as? String {
             cell.textLabel?.text = String(groupName)
         }
-        
         if let sectionProf = self.profNameArray[indexPath.row] as? String {
             cell.detailTextLabel?.text = String(sectionProf)
         }
