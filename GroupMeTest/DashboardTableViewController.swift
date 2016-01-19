@@ -65,9 +65,6 @@ class DashboardTableViewController: UITableViewController{
         }
         
         self.definesPresentationContext = true;
-//        if self.profNameArray.count == self.classObjectMap.count{
-//            self.tableView.reloadData()
-//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -107,7 +104,7 @@ class DashboardTableViewController: UITableViewController{
             // Open group in GroupMe app with: groupme://g/{group_id}
             if let groupID = self.groupIDArray[indexPath.row] as? String {
                 let deepLink = NSURL(string: "groupme://g/" + groupID)
-                UIApplication.sharedApplication().openURL(deepLink!)
+                UIApplication.sharedApplication().openURL(deepLink!) 
             }
 
         }
