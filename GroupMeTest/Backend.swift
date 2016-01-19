@@ -14,7 +14,7 @@ import Bolts
 
 
 //TO STORE DATA LOCALLY
-//      NSUserDefaults.standardUserDefaults().setObject("Rob", forKey: "name")
+//      NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
 //
 //TO ACCESS DATA STORED LOCALLY
 //      if let userName = NSUserDefaults.standardUserDefaults().objectForKey("name") as? String {

@@ -15,7 +15,8 @@ import Bolts
 class DashboardTableViewController: UITableViewController{
     
     //Test material
-    var classObjectMap:[String: String] = ["AAAS89S": "QOby6lGz9d", "MATH212": "FqG4iWZKAh"]
+    //var classObjectMap:[String: String] = ["AAAS89S": "QOby6lGz9d", "MATH212": "FqG4iWZKAh"]
+    
     
     // Arrays to fill from Parse query response
     var classNameArray = [String]() // to display as title
@@ -35,26 +36,29 @@ class DashboardTableViewController: UITableViewController{
         
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
-        for (courseName, objID) in classObjectMap{
+        if let classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? NSDictionary {
             
-            let query = PFQuery(className: courseName)
-            query.whereKey("objectId", equalTo: objID) // Checks for group matching desired section number
-            query.findObjectsInBackgroundWithBlock {
-                (objects: [PFObject]?, error: NSError?) -> Void in
-                if error == nil {
-                    // The find succeeded.
-                    if objects!.count > 0 {
-                        // Do something with the found objects
-                        if let objects = objects {
-                            for object in objects {
-//                                    print("Object ID: " + String(object.objectId!))
-//                                    print(String(object["sectionProf"]))
-                                    self.classNameArray.append(courseName)
+            for (courseName, objID) in classObjectMap{
+                
+                let query = PFQuery(className: String(courseName))
+                query.whereKey("objectId", equalTo: objID) // Checks for group matching desired section number
+                query.findObjectsInBackgroundWithBlock {
+                    (objects: [PFObject]?, error: NSError?) -> Void in
+                    if error == nil {
+                        // The find succeeded.
+                        if objects!.count > 0 {
+                            // Do something with the found objects
+                            if let objects = objects {
+                                for object in objects {
+                                    //                                    print("Object ID: " + String(object.objectId!))
+                                    //                                    print(String(object["sectionProf"]))
+                                    self.classNameArray.append(String(courseName))
                                     self.sectionNumberArray.append(String(object["sectionNumber"]))
                                     self.profNameArray.append(String(object["sectionProf"]))
                                     self.groupIDArray.append(String(object["groupID"]))
+                                }
+                                self.tableView.reloadData()
                             }
-                            self.tableView.reloadData()
                         }
                     }
                 }
