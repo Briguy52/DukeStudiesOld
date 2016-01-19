@@ -428,9 +428,9 @@
         <image name="library_backround.jpg" width="2508" height="1674"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="785-s6-Md2"/>
-        <segue reference="TSH-S2-vE7"/>
-        <segue reference="xwc-ml-NbH"/>
+        <segue reference="m7g-d1-G94"/>
         <segue reference="oY3-KN-iZd"/>
+        <segue reference="xwc-ml-NbH"/>
+        <segue reference="TSH-S2-vE7"/>
     </inferredMetricsTieBreakers>
 </document>

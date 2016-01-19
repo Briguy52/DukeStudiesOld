@@ -139,23 +139,21 @@ class Backend {
             }
         }
         
+//        let sectionVC = SectionTableViewController()
+        
         // Update local storage with joined group's information
         if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
             classObjectMap[courseString] = objID
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-            let sectionVC = SectionTableViewController()
-            sectionVC.performSegueWithIdentifier("sectionToDashSegue", sender: SectionTableViewController.self())
-
+//            sectionVC.sectionToDashFunc()
         }
         else { // classObjectMap doesn't exist yet
             var classObjectMap = [courseString : objID]
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-            let sectionVC = SectionTableViewController()
-            sectionVC.performSegueWithIdentifier("sectionToDashSegue", sender: SectionTableViewController.self())
-
+//            sectionVC.sectionToDashFunc()
         }
 
-        
+
         
     }
 

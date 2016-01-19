@@ -74,12 +74,16 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
             // Time to make Create Group call from backend
             let myBackend = Backend()
             myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
-            self.performSegueWithIdentifier("createToDashSegue", sender: self)
+//            self.performSegueWithIdentifier("createToDashSegue", sender: self)
 
         }
         
     }
     
+    
+    func sectionToDashFunc() -> Void {
+        self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+    }
     
         @IBAction func cancelPressed(sender: AnyObject) {
             self.navigationController?.popViewControllerAnimated(true)
