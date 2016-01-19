@@ -23,7 +23,7 @@ class SectionTableViewController: UITableViewController {
     var courses: NSArray!
     var selectedSubjectString: String!
     var selectedCourseString: String!
-
+    
     var sectionNumArray = [String]() // array of existing course numbers
     var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
     var groupIDArray = [String]() // array of groupIDs
@@ -54,11 +54,11 @@ class SectionTableViewController: UITableViewController {
                     // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
-                                self.objectIDArray.append(object.objectId!)
-                                self.sectionNumArray.append(String(object["sectionNumber"]!))
-                                self.sectionProfArray.append(String(object["sectionProf"]!))
-                                self.groupIDArray.append(String(object["groupID"]!))
-                                self.shareTokenArray.append(String(object["shareToken"]!))
+                            self.objectIDArray.append(object.objectId!)
+                            self.sectionNumArray.append(String(object["sectionNumber"]!))
+                            self.sectionProfArray.append(String(object["sectionProf"]!))
+                            self.groupIDArray.append(String(object["groupID"]!))
+                            self.shareTokenArray.append(String(object["shareToken"]!))
                         }
                         self.tableView.reloadData()
                     }
@@ -114,13 +114,21 @@ class SectionTableViewController: UITableViewController {
         /* Retrieve course and append subject code and name */
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
-            // Make backend call for JOIN
-            let myBackend = Backend()
-            myBackend.makeString(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], token: myBackend.ACCESS_TOKEN, courseString: self.parseClassString)
-            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+            
+            // Retrieve userToken
+            if let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
+                
+                // Make backend call for JOIN
+                let myBackend = Backend()
+                myBackend.makeString(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], token: myBackend.ACCESS_TOKEN, courseString: self.parseClassString)
+                self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+            }
+            else {
+                print("Error retrieving login information") // replace with better error in future
+            }
         }
     }
-
+    
     
     // MARK: - Navigation
     
@@ -137,7 +145,7 @@ class SectionTableViewController: UITableViewController {
             createVC.courses = self.courses
             createVC.selectedCourseString = self.selectedCourseString
             createVC.selectedSubjectString = self.selectedSubjectString
-
+            
         }
         if segue.identifier == "sectionToCourseCancel" {
             let courseVC = segue.destinationViewController as! CourseTableViewController
