@@ -48,7 +48,7 @@ class Backend {
     //    1) Course String - from inherited global variable
     //    2) Section Number String - from text field
     //    3) Professor Name String - from text field
-    func makeGroup(parseClassString: String, mySection: String, myProf: String){
+    func makeGroup(parseClassString: String, mySection: String, myProf: String, completion: (result: String) -> Void){
         var objectID = String()
         var groupID = String()
         var shareToken = String()
@@ -91,6 +91,7 @@ class Backend {
 //                            }
                             // Now add the USER to this new group!
                             self.joinGroup(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
+                                            completion(result: "we finished")
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
@@ -115,7 +116,7 @@ class Backend {
     //    3) token - comes from OAuth login
     //    4) courseString - comes from parseClassString
     
-    func joinGroup(groupID: String, shareToken: String, objID: String, courseString: String) -> Void {
+    func joinGroup(groupID: String, shareToken: String, objID: String, courseString: String, completion: (result: String) -> Void) -> Void {
         
         // Retrieve userToken from local storage
         let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String
@@ -144,13 +145,13 @@ class Backend {
         if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
             classObjectMap[courseString] = objID
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+            completion(result: "join finished")
         }
         else { // classObjectMap doesn't exist yet
             var classObjectMap = [courseString : objID]
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+            completion(result: "join finished")
         }
-
-
         
     }
 
