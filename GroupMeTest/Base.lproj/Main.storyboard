@@ -86,7 +86,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Xhk-I2-DPy">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="ZvY-lm-14o"/>
-                                <segue destination="f4Z-ga-8tb" kind="show" id="Wet-bY-vHT"/>
+                                <segue destination="K2f-SA-D8W" kind="show" id="1Fo-17-yCQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -108,7 +108,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NzC-kG-z10" detailTextLabel="idm-FE-T7g" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="iyB-te-psb">
-                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iyB-te-psb" id="nDF-vw-aXj">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -396,8 +396,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oY3-KN-iZd"/>
+        <segue reference="9SU-0u-btc"/>
+        <segue reference="xwc-ml-NbH"/>
         <segue reference="fae-h0-Wxe"/>
-        <segue reference="TSH-S2-vE7"/>
+        <segue reference="UgP-nu-y8G"/>
     </inferredMetricsTieBreakers>
 </document>

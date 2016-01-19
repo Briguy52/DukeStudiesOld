@@ -59,17 +59,16 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func createButtonPressed(sender: AnyObject) {
         let profName = profField.text
         let sectionNumber = sectionField.text
-        self.createButton.highlighted = true
         
         // If fields have not been filled, un-hide red label
         if profName == "" || sectionNumber == "" {
             fieldAlert.hidden = false
-            self.createButton.highlighted = false
         }
         else {
             // Time to make Create Group call from backend
             let myBackend = Backend()
             myBackend.testFunc("else reached")
+            myBackend.makeSection(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
 
         }
         

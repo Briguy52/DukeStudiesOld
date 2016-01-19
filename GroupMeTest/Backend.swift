@@ -30,7 +30,7 @@ class Backend {
     let ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
     var courseString = "Test1"
     var sectionNumber = "99"
-    var ACCESS_TOKEN: String! // user's access token, comes from OAuth login
+    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
     
     // Prints a String
     func testFunc(myString: String) {
@@ -48,13 +48,13 @@ class Backend {
     //    1) Course String - from inherited global variable
     //    2) Section Number String - from text field
     //    3) Professor Name String - from text field
-    func makeSection(myCourse: String, mySection: String, myProf: String){
+    func makeSection(parseClassString: String, mySection: String, myProf: String){
         var objectID = String()
         var groupID = String()
         var shareToken = String()
         
         // Make a new group
-        let parameters: [String: AnyObject] = ["name":myCourse, "share":true]
+        let parameters: [String: AnyObject] = ["name":parseClassString, "share":true]
         Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
             .responseJSON { response in
                 if let test = response.result.value {
@@ -75,12 +75,12 @@ class Backend {
                     testObject["sectionNumber"] = mySection
                     testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
                         if (success) {
-                            print("New group has been created and stored.")
+                            print("New group " + groupID + " has been created and stored.")
                             objectID = testObject.objectId!
-                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: myCourse) // Now add the USER to this new group!
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: parseClassString) // Now add the USER to this new group!
                         }
                         else {
-                            print("Error has occurred in storing new group")
+                            print("Error has occurred in storing new group " + groupID)
                             print(error)
                         }
                     }
@@ -122,7 +122,7 @@ class Backend {
         // Add user to group with Alamofire
         Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + token)
         print("Group Joined")
-        
+        print("courseString: " + courseString + " " + "objID: " + objID)
         // Update Parse's member count for that group
         var query = PFQuery(className:courseString)
         query.getObjectInBackgroundWithId(objID) {

@@ -28,7 +28,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
         if let subjectCode = subject["code"] as? String {
             self.navigationItem.title? = subjectCode
         }
-        self.navigationItem.title? = self.selectedSubjectString
+//        self.navigationItem.title? = self.selectedSubjectString
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchResultsUpdater = self
