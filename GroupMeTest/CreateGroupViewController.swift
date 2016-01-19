@@ -14,7 +14,7 @@ import UIKit
 class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
     // Put IBOutlet vars below
-   
+    
     @IBOutlet weak var profField: UITextField!
     @IBOutlet weak var sectionField: UITextField!
     
@@ -26,15 +26,20 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     var selectedSubjectString: String!
     var selectedCourseString: String!
     
-//    var course: [String: String]!
-//    var delegate: GroupSelectTableViewControllerDelegate!
+    //    var course: [String: String]!
+    //    var delegate: GroupSelectTableViewControllerDelegate!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var createButton: UIButton!
     
+
+    @IBOutlet weak var fieldAlert: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide red alert label initially
+        fieldAlert.hidden = true
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
     }
@@ -50,52 +55,53 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-
-//    @IBAction func createButtonPressed(sender: AnyObject) {
-//        let profName = profField.text
-//        let sectionNumber = sectionField.text
-//        
-//        if count(profName) > 0 {
-//            // make Create Group backend call here
-//            
-//            // segue to Dashboard here
-//        } else {
-//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-//            return
-//        }
-//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-//    }
+    
+    //    @IBAction func createButtonPressed(sender: AnyObject) {
+    //        let profName = profField.text
+    //        let sectionNumber = sectionField.text
+    //
+    //        if count(profName) > 0 {
+    //            // make Create Group backend call here
+    //
+    //            // segue to Dashboard here
+    //        } else {
+    //            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
+    //            return
+    //        }
+    //        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    //    }
     
     
-//    func dateTimePressed() {
-//        self.noneSelected = false
-//        self.noneButton.highlighted = true
-//        self.dateButton.titleLabel?.alpha = 1.0
-//        self.datePicker.alpha = 1.0
-//        self.view.endEditing(true)
-//    }
+    //    func dateTimePressed() {
+    //        self.noneSelected = false
+    //        self.noneButton.highlighted = true
+    //        self.dateButton.titleLabel?.alpha = 1.0
+    //        self.datePicker.alpha = 1.0
+    //        self.view.endEditing(true)
+    //    }
     
-
     
-
     
-//    @IBAction func cancelPressed(sender: AnyObject) {
-//        self.navigationController?.popViewControllerAnimated(true)
-//    }
-//    
-//    @IBAction func createGroupPressed(sender: AnyObject) {
-//        let profName = profField.text //good
-//        
-//        if count(profName) > 0 {
-//            // make Create Group backend call here
-//            
-//            // segue to Dashboard here
-//        } else {
-//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-//            return
-//        }
-//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-//    }
+    @IBAction func createButtonPressed(sender: AnyObject) {
+        let profName = profField.text
+        let sectionNumber = sectionField.text
+        self.createButton.highlighted = true
+        
+        // If fields have not been filled, un-hide red label
+        if profName == "" || sectionNumber == "" {
+            fieldAlert.hidden = false
+            self.createButton.highlighted = false
+        }
+        else {
+            // Time to make Create Group call from backend
+        }
+        
+    }
+    
+    
+    //    @IBAction func cancelPressed(sender: AnyObject) {
+    //        self.navigationController?.popViewControllerAnimated(true)
+    //    }
     
     // MARK: - UITextFieldDelegate
     
@@ -105,9 +111,9 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         } else if textField == self.sectionField {
             self.sectionField.becomeFirstResponder()
         }
-//        else if textField == self.locationField {
-//            self.view.endEditing(true)
-//        }
+        //        else if textField == self.locationField {
+        //            self.view.endEditing(true)
+        //        }
         return true
     }
     
