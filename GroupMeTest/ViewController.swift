@@ -15,24 +15,24 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var largeButton: UIButton!
+
     @IBAction func largeButtonPress(sender: AnyObject) {
         
         // CITE: Taken from Sam Wilskey's tutorial: http://samwilskey.com/swift-oauth/
         let authURL = NSURL(string: "https://oauth.groupme.com/oauth/authorize?client_id=PbjA37nq8pWpjuHDALASadyhVccu3STL4Vj5DrjpZLooTwK6")
         UIApplication.sharedApplication().openURL(authURL!)
         
-        if hasLoggedIn {
-            self.performSegueWithIdentifier("startToDashSegue", sender: self)
-        }
+        // Skip Welcome page on subsequent logins
+        NSUserDefaults.standardUserDefaults().setObject(false, forKey: "hasLoggedIn")
+
     }
-
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // From StackOverflow: http://stackoverflow.com/questions/24046164/how-do-i-get-a-reference-to-the-app-delegate-in-swift
-//        appDelegate.testFunc("Button Pressed")
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as! Bool
+        if hasLoggedIn {
+            self.performSegueWithIdentifier("startToDashSegue", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {

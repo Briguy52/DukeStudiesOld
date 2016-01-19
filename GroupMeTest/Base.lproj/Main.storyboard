@@ -59,6 +59,7 @@
                     </view>
                     <connections>
                         <outlet property="largeButton" destination="Dv1-zf-kxB" id="JAD-Nl-6Lk"/>
+                        <segue destination="K2f-SA-D8W" kind="show" identifier="startToDashSegue" id="zHY-at-khg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -430,7 +431,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="m7g-d1-G94"/>
         <segue reference="oY3-KN-iZd"/>
-        <segue reference="xwc-ml-NbH"/>
+        <segue reference="zHY-at-khg"/>
         <segue reference="TSH-S2-vE7"/>
     </inferredMetricsTieBreakers>
 </document>
