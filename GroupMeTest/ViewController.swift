@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "startToDashSegue" {
             let dashVC = segue.destinationViewController as! DashboardTableViewController
+            print("segue received") 
         }
     }
 

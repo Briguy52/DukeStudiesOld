@@ -76,7 +76,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="XTZ-21-yb6" detailTextLabel="fkI-DH-mPW" style="IBUITableViewCellStyleSubtitle" id="hcx-hc-pzA">
-                                <rect key="frame" x="0.0" y="22" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcx-hc-pzA" id="A1g-d5-ZrK">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -424,6 +424,21 @@
             </objects>
             <point key="canvasLocation" x="-27" y="519"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="YGx-gv-Uo5">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bu9-zg-4ey" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0JE-xy-GmL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rqA-9R-klv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2304" y="-1734"/>
+        </scene>
     </scenes>
     <resources>
         <image name="library_backround.jpg" width="2508" height="1674"/>
@@ -431,7 +446,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="m7g-d1-G94"/>
         <segue reference="9SU-0u-btc"/>
-        <segue reference="Uet-r2-rdl"/>
         <segue reference="zHY-at-khg"/>
+        <segue reference="UgP-nu-y8G"/>
     </inferredMetricsTieBreakers>
 </document>
