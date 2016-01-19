@@ -76,7 +76,17 @@ class Backend {
                         if (success) {
                             print("New group " + groupID + " has been created and stored.")
                             objectID = testObject.objectId!
-                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: parseClassString) // Now add the USER to this new group!
+                            // Store newly created group locally
+                            if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
+                                classObjectMap[parseClassString] = objectID
+                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+                            }
+                            else { // classObjectMap doesn't exist yet
+                                var classObjectMap = [parseClassString : objectID]
+                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+                            }
+                            // Now add the USER to this new group!
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: parseClassString)
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
