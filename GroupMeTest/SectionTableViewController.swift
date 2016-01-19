@@ -28,6 +28,7 @@ class SectionTableViewController: UITableViewController {
     var shareTokenArray = [String]() // array of shareTokens
     var objectIDArray = [String]() // array of objectIDs
     var selectedSection: String! // section selected by user
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,11 @@ class SectionTableViewController: UITableViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("sectionToCourseCancel", sender: self)
     }
     
     // MARK: - Table view data source
@@ -125,9 +131,12 @@ class SectionTableViewController: UITableViewController {
         }
         if segue.identifier == "createGroupSegue" {
             let createVC = segue.destinationViewController as! CreateGroupViewController
+            createVC.parseClassString = self.parseClassString
+            createVC.subject = self.subject
+            createVC.courses = self.courses
             createVC.selectedCourseString = self.selectedCourseString
             createVC.selectedSubjectString = self.selectedSubjectString
-            createVC.parseClassString = self.parseClassString
+
         }
         if segue.identifier == "sectionToCourseCancel" {
             let courseVC = segue.destinationViewController as! CourseTableViewController

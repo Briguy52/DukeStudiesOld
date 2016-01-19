@@ -25,10 +25,11 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0)
-        if let subjectCode = subject["code"] as? String {
-            self.navigationItem.title? = subjectCode
-        }
-//        self.navigationItem.title? = self.selectedSubjectString
+//        if let subjectCode = subject["code"] as? String {
+//            self.navigationItem.title? = subjectCode
+//        }
+        self.navigationItem.title? = self.selectedSubjectString
+
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchResultsUpdater = self
