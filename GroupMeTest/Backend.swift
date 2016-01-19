@@ -42,7 +42,7 @@ class Backend {
     
     // Called by: CreateGroupViewController.swift
     
-    // Helper function to make a new group when section doesn't exist
+    // Helper function to make a new group when section doesn't exist, makes nested call to joinGroup()
     // Inputs: 
     //    1) Course String - from inherited global variable
     //    2) Section Number String - from text field
@@ -89,7 +89,7 @@ class Backend {
                                 NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
                             }
                             // Now add the USER to this new group!
-                            self.makeString(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
+                            self.joinGroup(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
@@ -107,21 +107,6 @@ class Backend {
     
     // Called by: SectionTableViewController.swift
     
-    // Creates a joinURL to join a group
-    // Make nested call to joinGroup
-    // Order: makeString - joinGroup
-    // Inputs:
-    //    1) groupID - from Parse
-    //    2) shareToken - from Parse
-    //    3) objID - from Parse
-    //    4) token - user token from OAuth login
-    //    5) courseString - comes from parseClassString
-    
-    func makeString(groupID: String, shareToken: String, objID: String, courseString: String) -> Void {
-//        print("/groups/" + groupID + "/join/" + shareToken)
-        self.joinGroup("/groups/" + groupID + "/join/" + shareToken, objID: objID, courseString: courseString)
-    }
-    
     // Joins a group that already exists
     // Inputs:
     //    1) joinURL - comes from makeString()
@@ -129,10 +114,12 @@ class Backend {
     //    3) token - comes from OAuth login
     //    4) courseString - comes from parseClassString
     
-    func joinGroup(myRequest: String, objID: String, courseString: String) -> Void {
+    func joinGroup(groupID: String, shareToken: String, objID: String, courseString: String) -> Void {
         
         // Retrieve userToken from local storage
         let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String
+        
+        let myRequest = "/groups/" + groupID + "/join/" + shareToken
         
         // Add user to group with Alamofire
         Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + userToken!)
