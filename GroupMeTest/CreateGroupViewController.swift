@@ -85,11 +85,6 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         
     }
     
-    
-    func createToDashFunc() -> Void {
-        self.performSegueWithIdentifier("createToDashSegue", sender: self)
-    }
-    
         @IBAction func cancelPressed(sender: AnyObject) {
             self.navigationController?.popViewControllerAnimated(true)
             self.performSegueWithIdentifier("createToSectionCancel", sender: self)

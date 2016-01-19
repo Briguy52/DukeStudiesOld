@@ -90,8 +90,11 @@ class Backend {
 //                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
 //                            }
                             // Now add the USER to this new group!
-                            self.joinGroup(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
-                                            completion(result: "we finished")
+                            self.joinGroup(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString){
+                                (result: String) in
+                                completion(result: "create and join finished")
+                            }
+
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)

@@ -117,16 +117,13 @@ class SectionTableViewController: UITableViewController {
             
             // Make backend call for JOIN
             let myBackend = Backend()
-            myBackend.joinGroup(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString)
-//            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
-            self.sectionToDashFunc()
+            myBackend.joinGroup(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString){
+                (result: String) in
+//                print("got back: \(result)")
+                self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+            }
         }
     }
-    
-    func sectionToDashFunc() -> Void {
-        self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
-    }
-    
     
     // MARK: - Navigation
     
