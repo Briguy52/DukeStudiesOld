@@ -7,23 +7,28 @@
 //
 
 // use: "let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate" to access the ACCESS_TOKEN variable of AppDelegate in other files like ViewController
-
+var hasLoggedIn = false
 
 import UIKit
 
 class ViewController: UIViewController {
     
     
-    @IBOutlet weak var GroupMeLogin: UIButton!
-    // Sends user to GroupMe login page within the browser 
-    @IBAction func requestGroupMeAccess(sender: AnyObject) {
-        // OAuth Login Redirect
+    @IBOutlet weak var largeButton: UIButton!
+    @IBAction func largeButtonPress(sender: AnyObject) {
+        
         // CITE: Taken from Sam Wilskey's tutorial: http://samwilskey.com/swift-oauth/
         let authURL = NSURL(string: "https://oauth.groupme.com/oauth/authorize?client_id=PbjA37nq8pWpjuHDALASadyhVccu3STL4Vj5DrjpZLooTwK6")
         UIApplication.sharedApplication().openURL(authURL!)
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // From StackOverflow: http://stackoverflow.com/questions/24046164/how-do-i-get-a-reference-to-the-app-delegate-in-swift
-        appDelegate.testFunc("Button Pressed")
+        
+        if hasLoggedIn {
+            self.performSegueWithIdentifier("startToDashSegue", sender: self)
+        }
     }
+
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate // From StackOverflow: http://stackoverflow.com/questions/24046164/how-do-i-get-a-reference-to-the-app-delegate-in-swift
+//        appDelegate.testFunc("Button Pressed")
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,12 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "startToDashSegue" {
+            let dashVC = segue.destinationViewController as! DashboardTableViewController
+        }
     }
 
 

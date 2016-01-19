@@ -127,7 +127,6 @@ class SectionTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sectionToDashSegue" {
             let dashVC = segue.destinationViewController as! DashboardTableViewController
-            // Join call goes here?
         }
         if segue.identifier == "createGroupSegue" {
             let createVC = segue.destinationViewController as! CreateGroupViewController

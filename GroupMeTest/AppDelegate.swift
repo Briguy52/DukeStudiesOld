@@ -52,11 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlString = url.query // take in String https://YOUR_CALLBACK_URL/?access_token=ACCESS_TOKEN
         let queryArray = urlString!.componentsSeparatedByString("=") // split url like Java's String.split()
         ACCESS_TOKEN = queryArray[1]; // should contain ACCESS TOKEN only
-        //        print(ACCESS_TOKEN);
-        
-//        self.checkForOpen(courseString, mySection: sectionNumber)
-        self.makeSection(courseString, mySection: sectionNumber)
-        
+
         return true;
     }
     

@@ -120,8 +120,8 @@ class Backend {
         
         // Add user to group with Alamofire
         Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + token)
-        print("Group Joined")
-        print("courseString: " + courseString + " " + "objID: " + objID)
+//        print("Group Joined")
+//        print("courseString: " + courseString + " " + "objID: " + objID)
         // Update Parse's member count for that group
         var query = PFQuery(className:courseString)
         query.getObjectInBackgroundWithId(objID) {
