@@ -73,7 +73,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         else {
             // Time to make Create Group call from backend
             let myBackend = Backend()
-            myBackend.makeSection(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
+            myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
             self.performSegueWithIdentifier("createToDashSegue", sender: self)
 
         }

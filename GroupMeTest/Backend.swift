@@ -47,7 +47,7 @@ class Backend {
     //    1) Course String - from inherited global variable
     //    2) Section Number String - from text field
     //    3) Professor Name String - from text field
-    func makeSection(parseClassString: String, mySection: String, myProf: String){
+    func makeGroup(parseClassString: String, mySection: String, myProf: String){
         var objectID = String()
         var groupID = String()
         var shareToken = String()
