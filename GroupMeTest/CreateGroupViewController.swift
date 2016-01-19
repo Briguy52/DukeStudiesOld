@@ -10,6 +10,9 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import Parse
+import Bolts
 
 class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
@@ -17,7 +20,6 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
    
     @IBOutlet weak var profField: UITextField!
     @IBOutlet weak var sectionField: UITextField!
-    
     
     
     // Put other vars below
@@ -50,21 +52,27 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-
-//    @IBAction func createButtonPressed(sender: AnyObject) {
-//        let profName = profField.text
-//        let sectionNumber = sectionField.text
-//        
-//        if count(profName) > 0 {
-//            // make Create Group backend call here
-//            
-//            // segue to Dashboard here
-//        } else {
+    //Tried to call the create group method from AppDelegate.swift
+    //Also, don't we need to pass in course name? I'm not sure how we inherit variables 
+    //from other "view controllers" 
+    @IBAction func createButtonPressed(segue: UIStoryboardSegue, sender: AnyObject) {
+        let profName = profField.text
+        let sectionNumber = sectionField.text
+        let appDele = AppDelegate()
+        
+        if !(profName!.isEmpty) {
+            // make Create Group backend call here
+            appDele.makeSection(profName!, mySection: sectionNumber!)
+            // segue to Dashboard here
+            if segue.identifier == "ShowDashSegue"{
+                segue.destinationViewController as! DashboardTableViewController
+        }
+//        else {
 //            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
 //            return
 //        }
-//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-//    }
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
 //    func dateTimePressed() {
@@ -121,4 +129,5 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     }
     */
     
+}
 }
