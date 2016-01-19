@@ -15,16 +15,16 @@ import Bolts
 
 class SectionTableViewController: UITableViewController {
     
-    var parseClassString: String! // inherited from Subject and Course VC's, has form "Subject" + " " + "Course Number"
+    
+    var parseClassString: String!
+    var subject: NSDictionary!
+    var courses: NSArray!
+    var selectedSubjectString: String!
+    var selectedCourseString: String!
+
     var sectionNumArray = [String]() // array of existing course numbers
     var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
-    
-    // Note: Consider implementing the above two arrays as a dictionary instead
-    var selectedSubjectString: String! // to be displayed in cell title
-    var selectedCourseString: String! // to be displayed in cell title
     var selectedSection: String! // section selected by user
-    
-    var testInt = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,9 +81,6 @@ class SectionTableViewController: UITableViewController {
         // Note: UITableViewCellStyle.Default DOES NOT allow for subtitles!
         let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-//        print("tableView call: " + String(testInt))
-//        testInt++
-        
         // Display Class + Course + Section
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             cell.textLabel?.text = String(self.selectedSubjectString + " " + self.selectedCourseString + " " + "Section: " + sectionNum)
@@ -117,14 +114,20 @@ class SectionTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sectionToDashSegue" {
             let dashVC = segue.destinationViewController as! DashboardTableViewController
-            //            courseVC.delegate = self.delegate
-            //            sectionVC.subject = self.selectedCourse
-            //            sectionVC.courses = self.courses
+            // Join call goes here?
         }
         if segue.identifier == "createGroupSegue" {
             let createVC = segue.destinationViewController as! CreateGroupViewController
             createVC.selectedCourseString = self.selectedCourseString
             createVC.selectedSubjectString = self.selectedSubjectString
+            createVC.parseClassString = self.parseClassString
+        }
+        if segue.identifier == "sectionToCourseCancel" {
+            let courseVC = segue.destinationViewController as! CourseTableViewController
+            courseVC.parseClassString = self.selectedSubjectString
+            courseVC.subject = self.subject
+            courseVC.courses = self.courses
+            courseVC.selectedSubjectString = self.selectedSubjectString
         }
     }
 }

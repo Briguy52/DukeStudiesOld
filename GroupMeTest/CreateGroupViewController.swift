@@ -25,6 +25,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     var expanded = false
     var selectedSubjectString: String!
     var selectedCourseString: String!
+    var parseClassString: String!
     
     //    var course: [String: String]!
     //    var delegate: GroupSelectTableViewControllerDelegate!
@@ -55,33 +56,6 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-    
-    //    @IBAction func createButtonPressed(sender: AnyObject) {
-    //        let profName = profField.text
-    //        let sectionNumber = sectionField.text
-    //
-    //        if count(profName) > 0 {
-    //            // make Create Group backend call here
-    //
-    //            // segue to Dashboard here
-    //        } else {
-    //            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-    //            return
-    //        }
-    //        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    //    }
-    
-    
-    //    func dateTimePressed() {
-    //        self.noneSelected = false
-    //        self.noneButton.highlighted = true
-    //        self.dateButton.titleLabel?.alpha = 1.0
-    //        self.datePicker.alpha = 1.0
-    //        self.view.endEditing(true)
-    //    }
-    
-    
-    
     @IBAction func createButtonPressed(sender: AnyObject) {
         let profName = profField.text
         let sectionNumber = sectionField.text
@@ -94,14 +68,18 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         }
         else {
             // Time to make Create Group call from backend
+            let myBackend = Backend()
+            myBackend.testFunc("else reached")
+
         }
         
     }
     
     
-    //    @IBAction func cancelPressed(sender: AnyObject) {
-    //        self.navigationController?.popViewControllerAnimated(true)
-    //    }
+        @IBAction func cancelPressed(sender: AnyObject) {
+            self.navigationController?.popViewControllerAnimated(true)
+            self.performSegueWithIdentifier("createToSectionCancel", sender: self)
+        }
     
     // MARK: - UITextFieldDelegate
     
@@ -117,14 +95,19 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-    /*
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        if segue.identifier == "createToSectionCancel" {
+            let sectionVC = segue.destinationViewController as! SectionTableViewController
+            sectionVC.selectedCourseString = self.selectedCourseString
+            sectionVC.selectedSubjectString = self.selectedSubjectString
+            sectionVC.parseClassString = self.parseClassString
+        }
+        if segue.identifier == "createToDashSegue" {
+            let dashVC = segue.destinationViewController as! DashboardTableViewController
+        }
     }
-    */
+
     
 }

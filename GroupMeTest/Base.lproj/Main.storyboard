@@ -53,7 +53,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="XTZ-21-yb6" detailTextLabel="fkI-DH-mPW" style="IBUITableViewCellStyleSubtitle" id="hcx-hc-pzA">
-                                <rect key="frame" x="0.0" y="22" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcx-hc-pzA" id="A1g-d5-ZrK">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -108,7 +108,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NzC-kG-z10" detailTextLabel="idm-FE-T7g" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="iyB-te-psb">
-                                <rect key="frame" x="0.0" y="22" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iyB-te-psb" id="nDF-vw-aXj">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -197,7 +197,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="GA2-KY-QAO">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="bxH-9I-ZEz"/>
-                                <segue destination="ZUO-Do-XWH" kind="show" id="fae-h0-Wxe"/>
+                                <segue destination="ZUO-Do-XWH" kind="show" identifier="sectionToCourseCancel" id="fae-h0-Wxe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="R03-Om-Giw">
@@ -293,7 +293,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4wj-eO-Wz5">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="Ofu-p6-2Yv"/>
-                                <segue destination="Zii-cn-osg" kind="show" id="9SU-0u-btc"/>
+                                <segue destination="Zii-cn-osg" kind="show" identifier="createToSectionCancel" id="9SU-0u-btc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -396,8 +396,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9SU-0u-btc"/>
+        <segue reference="oY3-KN-iZd"/>
+        <segue reference="fae-h0-Wxe"/>
         <segue reference="TSH-S2-vE7"/>
-        <segue reference="785-s6-Md2"/>
     </inferredMetricsTieBreakers>
 </document>

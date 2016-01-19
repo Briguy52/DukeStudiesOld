@@ -13,12 +13,13 @@ import UIKit
 
 class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     
+    var parseClassString: String!
     var subjects: NSArray!
     var courses: NSArray!
     var selectedSubject: NSDictionary!    
     var filteredSubjects: NSArray!
     var searchController: UISearchController!
-    var parseClassString: String!
+
     
     //    @IBOutlet var searchBar: UISearchBar!
     
@@ -126,7 +127,6 @@ class SubjectTableViewController: UITableViewController, UISearchBarDelegate, UI
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "subjectToCourseSegue" {
             let courseVC = segue.destinationViewController as! CourseTableViewController
-            //            courseVC.delegate = self.delegate
             courseVC.selectedSubjectString = self.parseClassString
             courseVC.parseClassString = self.parseClassString
             courseVC.subject = self.selectedSubject

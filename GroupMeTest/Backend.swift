@@ -32,6 +32,11 @@ class Backend {
     var sectionNumber = "99"
     var ACCESS_TOKEN: String! // user's access token, comes from OAuth login
     
+    // Prints a String
+    func testFunc(myString: String) {
+        print(myString)
+    }
+    
     // ---------------------
     //  Creating a new group
     // ---------------------
