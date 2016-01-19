@@ -14,7 +14,7 @@
 		AF2387641C49E3A000C61BE9 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */; };
 		AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */; };
 		AF78580B1C4B23080072A821 /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78580A1C4B23080072A821 /* CreateGroupViewController.swift */; };
-		AF78580D1C4B2F850072A821 /* BackEndMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78580C1C4B2F850072A821 /* BackEndMethods.swift */; };
+		AF78580D1C4B2F850072A821 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF78580C1C4B2F850072A821 /* Backend.swift */; };
 		AF78580F1C4B308D0072A821 /* courses.json in Resources */ = {isa = PBXBuildFile; fileRef = AF78580E1C4B308D0072A821 /* courses.json */; };
 		AFCD8AB71C210B4D00A4A0EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */; };
 		AFCD8AB91C210B4D00A4A0EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */; };
@@ -40,7 +40,7 @@
 		AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		AF78580A1C4B23080072A821 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
-		AF78580C1C4B2F850072A821 /* BackEndMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackEndMethods.swift; sourceTree = "<group>"; };
+		AF78580C1C4B2F850072A821 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		AF78580E1C4B308D0072A821 /* courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = courses.json; sourceTree = "<group>"; };
 		AFCD8AB31C210B4D00A4A0EB /* GroupMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 				AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */,
 				AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */,
 				AFCD8ABA1C210B4D00A4A0EB /* Main.storyboard */,
-				AF78580C1C4B2F850072A821 /* BackEndMethods.swift */,
+				AF78580C1C4B2F850072A821 /* Backend.swift */,
 				AFCD8ABD1C210B4D00A4A0EB /* Assets.xcassets */,
 				AFCD8ABF1C210B4D00A4A0EB /* LaunchScreen.storyboard */,
 				AFCD8AC21C210B4D00A4A0EB /* Info.plist */,
@@ -282,7 +282,7 @@
 				631468BE1C4C7F57004E252A /* DashboardTableViewController.swift in Sources */,
 				AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */,
 				AFCD8AB71C210B4D00A4A0EB /* AppDelegate.swift in Sources */,
-				AF78580D1C4B2F850072A821 /* BackEndMethods.swift in Sources */,
+				AF78580D1C4B2F850072A821 /* Backend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

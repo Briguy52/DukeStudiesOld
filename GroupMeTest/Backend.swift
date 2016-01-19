@@ -30,7 +30,113 @@ class Backend {
     let ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
     var courseString = "Test1"
     var sectionNumber = "99"
+    var ACCESS_TOKEN: String! // user's access token, comes from OAuth login
     
+    // Prints a String
+    func testFunc(myString: String) {
+        print(myString)
+    }
+    
+    // ---------------------
+    //  Creating a new group
+    // ---------------------
+    
+    // Called by: CreateGroupViewController.swift
+    
+    // Helper function to make a new group when section doesn't exist
+    // Inputs: 
+    //    1) Course String - from inherited global variable
+    //    2) Section Number String - from text field
+    //    3) Professor Name String - from text field
+    func makeSection(myCourse: String, mySection: String, myProf: String){
+        var objectID = String()
+        var groupID = String()
+        var shareToken = String()
+        
+        // Make a new group
+        let parameters: [String: AnyObject] = ["name":myCourse, "share":true]
+        Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
+            .responseJSON { response in
+                if let test = response.result.value {
+                    // Code for parsing Group ID
+                    groupID = "\(test["response"]!!["group_id"]!!)"
+                    // Code for parsing Share Token
+                    var shareURL = test["response"]!!["share_url"]!!
+                    var shareArray = shareURL.componentsSeparatedByString("/")
+                    shareToken = shareArray[shareArray.count-1]
+                    
+                    // Add new object to Parse
+                    // CITE: Taken from Parse's quick start tutorial: https://parse.com/apps/quickstart#parse_data/mobile/ios/swift/existing
+                    var testObject = PFObject(className: self.courseString)
+                    testObject["groupID"] = groupID
+                    testObject["sectionProf"] = myProf
+                    testObject["shareToken"] = shareToken
+                    testObject["memberCount"] = 1
+                    testObject["sectionNumber"] = mySection
+                    testObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+                        if (success) {
+                            print("New group has been created and stored.")
+                            objectID = testObject.objectId!
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: myCourse) // Now add the USER to this new group!
+                        }
+                        else {
+                            print("Error has occurred in storing new group")
+                            print(error)
+                        }
+                    }
+                }
+        }
+    }
+    
+    
+    // --------------------------
+    //  Joining an existing group
+    // --------------------------
+    
+    // Called by: SectionTableViewController.swift
+    
+    // Creates a joinURL to join a group
+    // Make nested call to joinGroup
+    // Order: makeString - joinGroup
+    // Inputs:
+    //    1) groupID - from Parse
+    //    2) shareToken - from Parse
+    //    3) objID - from Parse
+    //    4) token - user token from OAuth login
+    //    5) courseString - comes from parseClassString
+    
+    func makeString(groupID: String, shareToken: String, objID: String, token: String, courseString: String) -> Void {
+//        print("/groups/" + groupID + "/join/" + shareToken)
+        self.joinGroup("/groups/" + groupID + "/join/" + shareToken, objID: objID, token: token, courseString: courseString)
+    }
+    
+    // Joins a group that already exists
+    // Inputs:
+    //    1) joinURL - comes from makeString()
+    //    2) objID - comes from Parse
+    //    3) token - comes from OAuth login
+    //    4) courseString - comes from parseClassString
+    
+    func joinGroup(myRequest: String, objID: String, token: String, courseString: String) -> Void {
+        
+        // Add user to group with Alamofire
+        Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + token)
+        print("Group Joined")
+        
+        // Update Parse's member count for that group
+        var query = PFQuery(className:courseString)
+        query.getObjectInBackgroundWithId(objID) {
+            (object: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let object = object {
+                var temp: Int = object["memberCount"] as! Int
+                object["memberCount"] = temp + 1
+                object.saveInBackground()
+            }
+        }
+    }
+
     
     // Recheck member count in GroupMe through Alamofire call
     func getGroupMeMemberCount(groupID: String, objID: String) -> Void {

@@ -5,33 +5,22 @@
 //  Created by Brian Lin on 1/15/16.
 //  Copyright © 2016 Brian Lin. All rights reserved.
 //
-//
-//  CourseTableViewController.swift
-//  SwiftParseChat
-//
-//  Created by Jesse Hu on 3/9/15.
-//  Copyright (c) 2015 Jesse Hu. All rights reserved.
-//
-
-/* Brian's Key Changes:
-- Comment out all references to 'GroupSelectTableViewControllerDelegate'
-- Replace courseToGroupSegue with courseToSectionSegue (since we still need to segue to section selection)
-*/
+//  Based heavily on Jesse Hu's code of the same name
 
 import UIKit
 
 class CourseTableViewController: UITableViewController, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating {
     
+    
+    var parseClassString: String!
     var subject: NSDictionary!
     var courses: NSArray!
-    //    var delegate: GroupSelectTableViewControllerDelegate!
-    var selectedSubjectString: String! // to be displayed in SectionVC
-    var selectedCourseString: String! // to be displayed in SectionVC
-    var selectedCourse: [String: String]!
+    var selectedSubjectString: String!
+    var selectedCourseString: String!
     
+    var selectedCourse: [String: String]!
     var filteredCourses: NSArray!
     var searchController: UISearchController!
-    var parseClassString: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +28,7 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
         if let subjectCode = subject["code"] as? String {
             self.navigationItem.title? = subjectCode
         }
+        self.navigationItem.title? = self.selectedSubjectString
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchResultsUpdater = self
@@ -113,7 +103,6 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
                 self.selectedCourse = course
                 self.selectedCourseString = course["course_number"]! as String
                 parseClassString = parseClassString + course["course_number"]! as String
-                print(parseClassString)
                 if let code = self.subject["code"] as? String {
                     self.selectedCourse["subject_code"] = code
                 }
@@ -128,25 +117,14 @@ class CourseTableViewController: UITableViewController, UISearchBarDelegate, UIS
     
     // MARK: - Navigation
     
-    //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    //        if segue.identifier == "courseToGroupsSegue" {
-    //            let groupSelectVC = segue.destinationViewController as! GroupSelectTableViewController
-    //            groupSelectVC.delegate = self.delegate
-    //            groupSelectVC.course = self.selectedCourse
-    //        }
-    //    }
-    
-    // MARK: - Navigation
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "courseToSectionSegue" {
             let sectionVC = segue.destinationViewController as! SectionTableViewController
-            sectionVC.selectedCourseString = self.selectedCourseString
-            sectionVC.selectedSubjectString = self.selectedSubjectString
             sectionVC.parseClassString = self.parseClassString
-            //            courseVC.delegate = self.delegate
-            //            sectionVC.subject = self.selectedCourse
-            //            sectionVC.courses = self.courses
+            sectionVC.subject = self.subject
+            sectionVC.courses = self.courses
+            sectionVC.selectedSubjectString = self.selectedSubjectString
+            sectionVC.selectedCourseString = self.selectedCourseString
         }
     }
     

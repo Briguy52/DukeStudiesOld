@@ -197,7 +197,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="GA2-KY-QAO">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="bxH-9I-ZEz"/>
-                                <segue destination="ZUO-Do-XWH" kind="show" id="fae-h0-Wxe"/>
+                                <segue destination="ZUO-Do-XWH" kind="show" identifier="sectionToCourseCancel" id="fae-h0-Wxe"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="R03-Om-Giw">
@@ -253,25 +253,39 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Section number" id="wcb-da-gaE">
                                 <cells>
+<<<<<<< HEAD
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="384" id="yN6-OU-CyT">
                                         <rect key="frame" x="0.0" y="120" width="600" height="384"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yN6-OU-CyT" id="V4X-Ch-gPq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="384"/>
+=======
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="418" id="yN6-OU-CyT">
+                                        <rect key="frame" x="0.0" y="120" width="600" height="418"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yN6-OU-CyT" id="V4X-Ch-gPq">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="417.5"/>
+>>>>>>> 6da7f1e9d7bf997c8eabba221f0301e65fae2b31
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQY-if-dkn">
                                                     <rect key="frame" x="15" y="46" width="46" height="30"/>
                                                     <state key="normal" title="Create"/>
                                                     <connections>
-                                                        <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="flg-gs-dnQ"/>
+                                                        <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="6rf-wj-u9R"/>
                                                     </connections>
                                                 </button>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-WX-6aV" userLabel="Section Field">
-                                                    <rect key="frame" x="15" y="8" width="97" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-WX-6aV" userLabel="Section Field">
+                                                    <rect key="frame" x="8" y="8" width="97" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please enter both fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P86-Io-cZ1">
+                                                    <rect key="frame" x="15" y="78" width="308" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -290,13 +304,14 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="4wj-eO-Wz5">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="Ofu-p6-2Yv"/>
-                                <segue destination="Zii-cn-osg" kind="show" id="9SU-0u-btc"/>
+                                <segue destination="Zii-cn-osg" kind="show" identifier="createToSectionCancel" id="9SU-0u-btc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="4wj-eO-Wz5" id="Yqc-Eh-F4l"/>
                         <outlet property="createButton" destination="CQY-if-dkn" id="xlp-yc-1pG"/>
+                        <outlet property="fieldAlert" destination="P86-Io-cZ1" id="RUS-cD-dFZ"/>
                         <outlet property="profField" destination="YJo-LC-VQi" id="q0O-vY-2a1"/>
                         <outlet property="sectionField" destination="cPO-WX-6aV" id="rpl-2t-Oue"/>
                     </connections>
@@ -362,18 +377,43 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Dashboard" id="42u-F6-Tvx" userLabel="Dashboard">
-                        <barButtonItem key="rightBarButtonItem" title="Find a group" id="jgf-fH-92v" userLabel="Find a group"/>
+                        <barButtonItem key="rightBarButtonItem" title="Find a group" id="jgf-fH-92v" userLabel="Find a group">
+                            <connections>
+                                <segue destination="7aI-tr-NPE" kind="show" identifier="dashToSubjectSegue" id="TSH-S2-vE7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Owa-9H-BzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3910" y="-182"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="him-sY-eDF">
+            <objects>
+                <viewController id="8N5-j4-4gO" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wjh-SK-lBZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="ht9-xa-liQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KGe-Je-pir">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A7u-Bf-9Jg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="fae-h0-Wxe"/>
+<<<<<<< HEAD
         <segue reference="9SU-0u-btc"/>
         <segue reference="aHj-pC-D7F"/>
         <segue reference="UgP-nu-y8G"/>
+=======
+        <segue reference="TSH-S2-vE7"/>
+>>>>>>> 6da7f1e9d7bf997c8eabba221f0301e65fae2b31
     </inferredMetricsTieBreakers>
 </document>

@@ -17,7 +17,7 @@ import Bolts
 class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     
     // Put IBOutlet vars below
-   
+    
     @IBOutlet weak var profField: UITextField!
     @IBOutlet weak var sectionField: UITextField!
     
@@ -27,16 +27,22 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     var expanded = false
     var selectedSubjectString: String!
     var selectedCourseString: String!
+    var parseClassString: String!
     
-//    var course: [String: String]!
-//    var delegate: GroupSelectTableViewControllerDelegate!
+    //    var course: [String: String]!
+    //    var delegate: GroupSelectTableViewControllerDelegate!
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var createButton: UIButton!
     
+
+    @IBOutlet weak var fieldAlert: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Hide red alert label initially
+        fieldAlert.hidden = true
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "dismissKeyboard"))
     }
@@ -52,6 +58,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+<<<<<<< HEAD
     //Tried to call the create group method from AppDelegate.swift
     //Also, don't we need to pass in course name? I'm not sure how we inherit variables 
     //from other "view controllers" 
@@ -84,26 +91,32 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
 //    }
     
 
-    
+=======
+    @IBAction func createButtonPressed(sender: AnyObject) {
+        let profName = profField.text
+        let sectionNumber = sectionField.text
+        self.createButton.highlighted = true
+        
+        // If fields have not been filled, un-hide red label
+        if profName == "" || sectionNumber == "" {
+            fieldAlert.hidden = false
+            self.createButton.highlighted = false
+        }
+        else {
+            // Time to make Create Group call from backend
+            let myBackend = Backend()
+            myBackend.testFunc("else reached")
 
+        }
+        
+    }
+>>>>>>> 6da7f1e9d7bf997c8eabba221f0301e65fae2b31
     
-//    @IBAction func cancelPressed(sender: AnyObject) {
-//        self.navigationController?.popViewControllerAnimated(true)
-//    }
-//    
-//    @IBAction func createGroupPressed(sender: AnyObject) {
-//        let profName = profField.text //good
-//        
-//        if count(profName) > 0 {
-//            // make Create Group backend call here
-//            
-//            // segue to Dashboard here
-//        } else {
-//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-//            return
-//        }
-//        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-//    }
+    
+        @IBAction func cancelPressed(sender: AnyObject) {
+            self.navigationController?.popViewControllerAnimated(true)
+            self.performSegueWithIdentifier("createToSectionCancel", sender: self)
+        }
     
     // MARK: - UITextFieldDelegate
     
@@ -113,21 +126,26 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         } else if textField == self.sectionField {
             self.sectionField.becomeFirstResponder()
         }
-//        else if textField == self.locationField {
-//            self.view.endEditing(true)
-//        }
+        //        else if textField == self.locationField {
+        //            self.view.endEditing(true)
+        //        }
         return true
     }
     
-    /*
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+        if segue.identifier == "createToSectionCancel" {
+            let sectionVC = segue.destinationViewController as! SectionTableViewController
+            sectionVC.selectedCourseString = self.selectedCourseString
+            sectionVC.selectedSubjectString = self.selectedSubjectString
+            sectionVC.parseClassString = self.parseClassString
+        }
+        if segue.identifier == "createToDashSegue" {
+            let dashVC = segue.destinationViewController as! DashboardTableViewController
+        }
     }
-    */
+
     
 }
 }
