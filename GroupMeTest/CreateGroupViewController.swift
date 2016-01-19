@@ -8,6 +8,8 @@
 //  Based on code of the same name by Jesse Hu
 //
 
+// Note: Backend 'CREATE' calls are made in this VC
+
 import Foundation
 import UIKit
 import Alamofire

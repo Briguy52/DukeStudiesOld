@@ -7,7 +7,7 @@
 //
 //  Based heavily on Jesse Hu's code of the same name
 
-
+// Note: No backend methods should be called in this VC
 
 import UIKit
 

@@ -6,6 +6,8 @@
 //  Copyright © 2016 Brian Lin. All rights reserved.
 //
 
+// Note: Backend 'JOIN' calls are made in this VC
+
 import Foundation
 
 import UIKit

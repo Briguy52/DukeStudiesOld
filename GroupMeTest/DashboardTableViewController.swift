@@ -6,6 +6,8 @@
 //
 //
 
+// Note: No backend methods are called in this VC
+
 import Foundation
 import UIKit
 import Alamofire
@@ -13,10 +15,7 @@ import Parse
 import Bolts
 
 class DashboardTableViewController: UITableViewController{
-    
-    //Test material
-    //var classObjectMap:[String: String] = ["AAAS89S": "QOby6lGz9d", "MATH212": "FqG4iWZKAh"]
-    
+
     
     // Arrays to fill from Parse query response
     var classNameArray = [String]() // to display as title
