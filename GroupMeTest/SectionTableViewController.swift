@@ -115,17 +115,10 @@ class SectionTableViewController: UITableViewController {
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
             
-            // Retrieve userToken
-            if let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
-                
-                // Make backend call for JOIN
-                let myBackend = Backend()
-                myBackend.makeString(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], token: userToken, courseString: self.parseClassString)
-                self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
-            }
-            else {
-                print("Error retrieving login information") // replace with better error in future
-            }
+            // Make backend call for JOIN
+            let myBackend = Backend()
+            myBackend.makeString(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString)
+            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
         }
     }
     

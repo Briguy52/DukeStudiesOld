@@ -29,7 +29,7 @@ class Backend {
     let baseURL = "https://api.groupme.com/v3"
     let ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
     var sectionNumber = "99"
-    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
+//    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
     var tempString = "Test1"
     // Prints a String
     func testFunc(myString: String) {
@@ -52,9 +52,13 @@ class Backend {
         var groupID = String()
         var shareToken = String()
         
+        // Retrieve stored tokens
+        let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String
+        let adminToken = NSUserDefaults.standardUserDefaults().objectForKey("adminToken") as? String
+        
         // Make a new group
         let parameters: [String: AnyObject] = ["name":parseClassString, "share":true]
-        Alamofire.request(.POST, self.baseURL + "/groups?token=" + self.ADMIN_TOKEN, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
+        Alamofire.request(.POST, self.baseURL + "/groups?token=" + adminToken!, parameters: parameters, encoding: .JSON) // CREATES a new group using above 'parameters' variable
             .responseJSON { response in
                 if let test = response.result.value {
                     // Code for parsing Group ID
@@ -86,7 +90,7 @@ class Backend {
                                 NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
                             }
                             // Now add the USER to this new group!
-                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: self.ACCESS_TOKEN, courseString: parseClassString)
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: userToken!, courseString: parseClassString)
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
@@ -114,9 +118,9 @@ class Backend {
     //    4) token - user token from OAuth login
     //    5) courseString - comes from parseClassString
     
-    func makeString(groupID: String, shareToken: String, objID: String, token: String, courseString: String) -> Void {
+    func makeString(groupID: String, shareToken: String, objID: String, courseString: String) -> Void {
 //        print("/groups/" + groupID + "/join/" + shareToken)
-        self.joinGroup("/groups/" + groupID + "/join/" + shareToken, objID: objID, token: token, courseString: courseString)
+        self.joinGroup("/groups/" + groupID + "/join/" + shareToken, objID: objID, courseString: courseString)
     }
     
     // Joins a group that already exists
@@ -126,12 +130,16 @@ class Backend {
     //    3) token - comes from OAuth login
     //    4) courseString - comes from parseClassString
     
-    func joinGroup(myRequest: String, objID: String, token: String, courseString: String) -> Void {
+    func joinGroup(myRequest: String, objID: String, courseString: String) -> Void {
+        
+        // Retrieve userToken from local storage
+        let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String
         
         // Add user to group with Alamofire
-        Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + token)
+        Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + userToken!)
 //        print("Group Joined")
 //        print("courseString: " + courseString + " " + "objID: " + objID)
+        
         // Update Parse's member count for that group
         var query = PFQuery(className:courseString)
         query.getObjectInBackgroundWithId(objID) {
