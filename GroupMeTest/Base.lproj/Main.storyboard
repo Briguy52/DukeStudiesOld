@@ -86,7 +86,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Xhk-I2-DPy">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="ZvY-lm-14o"/>
-                                <segue destination="K2f-SA-D8W" kind="show" id="1Fo-17-yCQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -169,13 +168,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ckg-3G-IWe">
-                                            <rect key="frame" x="16" y="10" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="16" y="10" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNh-To-oPp">
-                                            <rect key="frame" x="16" y="31" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="16" y="31" width="41" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -253,18 +252,18 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Section number" id="wcb-da-gaE">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="418" id="yN6-OU-CyT">
-                                        <rect key="frame" x="0.0" y="120" width="600" height="418"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="384" id="yN6-OU-CyT">
+                                        <rect key="frame" x="0.0" y="120" width="600" height="384"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yN6-OU-CyT" id="V4X-Ch-gPq">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="417.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="383.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CQY-if-dkn">
                                                     <rect key="frame" x="15" y="46" width="46" height="30"/>
                                                     <state key="normal" title="Create"/>
                                                     <connections>
-                                                        <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="6rf-wj-u9R"/>
+                                                        <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="oac-qi-IOg"/>
                                                         <segue destination="K2f-SA-D8W" kind="show" identifier="createToDashSegue" id="SSS-M4-TRI"/>
                                                     </connections>
                                                 </button>
@@ -345,13 +344,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YE5-sd-sfR">
-                                            <rect key="frame" x="16" y="10" width="31.5" height="19.5"/>
+                                            <rect key="frame" x="16" y="10" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wq-rD-wUU">
-                                            <rect key="frame" x="16" y="31" width="40.5" height="13.5"/>
+                                            <rect key="frame" x="16" y="31" width="41" height="14"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -397,8 +396,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="SSS-M4-TRI"/>
         <segue reference="9SU-0u-btc"/>
-        <segue reference="xwc-ml-NbH"/>
         <segue reference="fae-h0-Wxe"/>
         <segue reference="TSH-S2-vE7"/>
     </inferredMetricsTieBreakers>
