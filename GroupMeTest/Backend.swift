@@ -32,8 +32,9 @@ class Backend {
 //    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
     var tempString = "Test1"
     // Prints a String
-    func testFunc(myString: String) {
+    func testFunc(myString: String, completion: (result: String) -> Void) {
         print(myString)
+        completion(result: "we finished")
     }
     
     // ---------------------
@@ -139,18 +140,14 @@ class Backend {
             }
         }
         
-//        let sectionVC = SectionTableViewController()
-        
         // Update local storage with joined group's information
         if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
             classObjectMap[courseString] = objID
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-//            sectionVC.sectionToDashFunc()
         }
         else { // classObjectMap doesn't exist yet
             var classObjectMap = [courseString : objID]
             NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-//            sectionVC.sectionToDashFunc()
         }
 
 

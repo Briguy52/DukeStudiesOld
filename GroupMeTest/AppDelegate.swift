@@ -44,6 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            print("Access token is: " + test)
 //        }
         
+        // Test completion handling
+//        let myBackend = Backend()
+//        myBackend.testFunc("commands") {
+//            (result: String) in
+//            print("got back: \(result)")
+//        }
+        
         return true;
     }
     
