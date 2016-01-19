@@ -24,6 +24,9 @@ class SectionTableViewController: UITableViewController {
 
     var sectionNumArray = [String]() // array of existing course numbers
     var sectionProfArray = [String]() // array of professor names, corresponds to sectionNumArray
+    var groupIDArray = [String]() // array of groupIDs
+    var shareTokenArray = [String]() // array of shareTokens
+    var objectIDArray = [String]() // array of objectIDs
     var selectedSection: String! // section selected by user
     
     override func viewDidLoad() {
@@ -43,15 +46,16 @@ class SectionTableViewController: UITableViewController {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 // The find succeeded.
-//                print("Successfully retrieved \(objects!.count) open groups.")
                 if objects!.count > 0 {
                     
                     // Do something with the found objects
                     if let objects = objects {
                         for object in objects {
-//                                print(String(object["sectionNumber"]!))
+                                self.objectIDArray.append(object.objectId!)
                                 self.sectionNumArray.append(String(object["sectionNumber"]!))
                                 self.sectionProfArray.append(String(object["sectionProf"]!))
+                                self.groupIDArray.append(String(object["groupID"]!))
+                                self.shareTokenArray.append(String(object["shareToken"]!))
                         }
                         self.tableView.reloadData()
                     }
@@ -102,6 +106,9 @@ class SectionTableViewController: UITableViewController {
         /* Retrieve course and append subject code and name */
         if let sectionNum = self.sectionNumArray[indexPath.row] as? String {
             self.selectedSection = sectionNum
+            // Make backend call for JOIN
+            let myBackend = Backend()
+            myBackend.makeString(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], token: myBackend.ACCESS_TOKEN, courseString: self.parseClassString)
             self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
         }
     }

@@ -264,7 +264,6 @@
                                                     <state key="normal" title="Create"/>
                                                     <connections>
                                                         <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="oac-qi-IOg"/>
-                                                        <segue destination="K2f-SA-D8W" kind="show" identifier="createToDashSegue" id="SSS-M4-TRI"/>
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-WX-6aV" userLabel="Section Field">
@@ -280,6 +279,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="K2f-SA-D8W" kind="show" identifier="createToDashSegue" id="fVB-kb-mAd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -396,7 +398,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SSS-M4-TRI"/>
+        <segue reference="fVB-kb-mAd"/>
         <segue reference="9SU-0u-btc"/>
         <segue reference="fae-h0-Wxe"/>
         <segue reference="TSH-S2-vE7"/>

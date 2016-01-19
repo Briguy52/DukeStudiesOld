@@ -58,40 +58,8 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-<<<<<<< HEAD
-    //Tried to call the create group method from AppDelegate.swift
-    //Also, don't we need to pass in course name? I'm not sure how we inherit variables 
-    //from other "view controllers" 
-    @IBAction func createButtonPressed(segue: UIStoryboardSegue, sender: AnyObject) {
-        let profName = profField.text
-        let sectionNumber = sectionField.text
-        let appDele = AppDelegate()
-        
-        if !(profName!.isEmpty) {
-            // make Create Group backend call here
-            appDele.makeSection(profName!, mySection: sectionNumber!)
-            // segue to Dashboard here
-            if segue.identifier == "ShowDashSegue"{
-                segue.destinationViewController as! DashboardTableViewController
-        }
-//        else {
-//            HudUtil.displayErrorHUD(self.view, displayText: "Professor name field must not be empty", displayTime: 1.5)
-//            return
-//        }
-        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    
-//    func dateTimePressed() {
-//        self.noneSelected = false
-//        self.noneButton.highlighted = true
-//        self.dateButton.titleLabel?.alpha = 1.0
-//        self.datePicker.alpha = 1.0
-//        self.view.endEditing(true)
-//    }
-    
 
-=======
+    
     @IBAction func createButtonPressed(sender: AnyObject) {
         let profName = profField.text
         let sectionNumber = sectionField.text
@@ -109,7 +77,6 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         }
         
     }
->>>>>>> 6da7f1e9d7bf997c8eabba221f0301e65fae2b31
     
     
         @IBAction func cancelPressed(sender: AnyObject) {
@@ -140,11 +107,8 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
             sectionVC.selectedSubjectString = self.selectedSubjectString
             sectionVC.parseClassString = self.parseClassString
         }
-//        if segue.identifier == "createToDashSegue" {
-//            let dashVC = segue.destinationViewController as! DashboardTableViewController
-//        }
+        if segue.identifier == "createToDashSegue" {
+            let dashVC = segue.destinationViewController as! DashboardTableViewController
+        }
     }
-
-    
-}
 }
