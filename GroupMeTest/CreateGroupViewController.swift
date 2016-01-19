@@ -22,12 +22,12 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var sectionField: UITextField!
     
     
-    // Put other vars below
-    var noneSelected = true
-    var expanded = false
+    // Put other vars below    
+    var parseClassString: String!
+    var subject: NSDictionary!
+    var courses: NSArray!
     var selectedSubjectString: String!
     var selectedCourseString: String!
-    var parseClassString: String!
     
     //    var course: [String: String]!
     //    var delegate: GroupSelectTableViewControllerDelegate!
@@ -106,6 +106,8 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
             sectionVC.selectedCourseString = self.selectedCourseString
             sectionVC.selectedSubjectString = self.selectedSubjectString
             sectionVC.parseClassString = self.parseClassString
+            sectionVC.courses = self.courses
+            sectionVC.subject = self.subject
         }
         if segue.identifier == "createToDashSegue" {
             let dashVC = segue.destinationViewController as! DashboardTableViewController
