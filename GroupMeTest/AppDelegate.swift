@@ -22,24 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let baseURL = "https://api.groupme.com/v3" // Base String for all GroupMe API calls
     var joinURL = String() // URL for joining (mutable)
     
-    /*
-    Function Hierarchy
-    1. application() - runs when opened from URL (ie after OAuth login)
-    -Init Parse keys
-    -Retrieve and store ACESS_TOKEN (of user)
-    -TODO: Keep this stored for later logins (avoid doing OAuth again)
-    -Makes call to checkForOpen()
-    -TODO: Move this away, checkForOpen() should ONLY be called when user wants to JOIN a group
-    
-    2. checkForOpen() - called by clicking on an existing section
-    -Case 1: Open group(s) (<7 members on Parse), calls checkEmpty() on group with greatest member count
-    -Case 2: No open groups - makes group (with admin token), stores info on Parse, and calls makeString()
-    -TODO: Case 3: Error - add to logs
-    
-    3. makeSection() - called by clicking on 'Make new section'
-    -Makes a new group and adds information to Parse like checkForOpen()
-    */
-    
     // Add handleOpenURL function- will call this function everytime the app is opened from a URL
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
         
@@ -52,7 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlString = url.query // take in String https://YOUR_CALLBACK_URL/?access_token=ACCESS_TOKEN
         let queryArray = urlString!.componentsSeparatedByString("=") // split url like Java's String.split()
         ACCESS_TOKEN = queryArray[1]; // should contain ACCESS TOKEN only
-
+        
+        // Store ACCESS_TOKEN locally (thanks Austin and Cody)
+        NSUserDefaults.standardUserDefaults().setObject(ACCESS_TOKEN, forKey: "userToken")
+        
+        // Test retrieval 
+        if let test = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
+            print("Access token is: " + test)
+        }
+        
         return true;
     }
     
