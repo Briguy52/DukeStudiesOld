@@ -79,15 +79,15 @@ class Backend {
                         if (success) {
                             print("New group " + groupID + " has been created and stored.")
                             objectID = testObject.objectId!
-                            // Store newly created group locally
-                            if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
-                                classObjectMap[parseClassString] = objectID
-                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-                            }
-                            else { // classObjectMap doesn't exist yet
-                                var classObjectMap = [parseClassString : objectID]
-                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
-                            }
+//                            // Store newly created group locally
+//                            if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
+//                                classObjectMap[parseClassString] = objectID
+//                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+//                            }
+//                            else { // classObjectMap doesn't exist yet
+//                                var classObjectMap = [parseClassString : objectID]
+//                                NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+//                            }
                             // Now add the USER to this new group!
                             self.joinGroup(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
                         }
@@ -138,6 +138,25 @@ class Backend {
                 object.saveInBackground()
             }
         }
+        
+        // Update local storage with joined group's information
+        if var classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? Dictionary<String,String> {
+            classObjectMap[courseString] = objID
+            NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+            let sectionVC = SectionTableViewController()
+            sectionVC.performSegueWithIdentifier("sectionToDashSegue", sender: SectionTableViewController.self())
+
+        }
+        else { // classObjectMap doesn't exist yet
+            var classObjectMap = [courseString : objID]
+            NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
+            let sectionVC = SectionTableViewController()
+            sectionVC.performSegueWithIdentifier("sectionToDashSegue", sender: SectionTableViewController.self())
+
+        }
+
+        
+        
     }
 
     
@@ -227,8 +246,5 @@ class Backend {
             }
         }
     }
-
-
-    
 
 }

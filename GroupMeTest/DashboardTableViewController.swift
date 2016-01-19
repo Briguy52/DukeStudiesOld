@@ -36,7 +36,7 @@ class DashboardTableViewController: UITableViewController{
         // This code is for pulling stuff FROM PARSE
         // CITE: Taken from Parse's iOS Developers Guide: https://parse.com/docs/ios/guide#queries
         if let classObjectMap = NSUserDefaults.standardUserDefaults().objectForKey("classObjectMap") as? NSDictionary {
-            
+            print(classObjectMap.allKeys)
             for (courseName, objID) in classObjectMap{
                 
                 let query = PFQuery(className: String(courseName))

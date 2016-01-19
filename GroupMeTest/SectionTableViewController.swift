@@ -118,7 +118,7 @@ class SectionTableViewController: UITableViewController {
             // Make backend call for JOIN
             let myBackend = Backend()
             myBackend.joinGroup(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString)
-            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+//            self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
         }
     }
     
