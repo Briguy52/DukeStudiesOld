@@ -28,10 +28,9 @@ import Bolts
 class Backend {
     let baseURL = "https://api.groupme.com/v3"
     let ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
-    var courseString = "Test1"
     var sectionNumber = "99"
     var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
-    
+    var tempString = "Test1"
     // Prints a String
     func testFunc(myString: String) {
         print(myString)
@@ -67,7 +66,7 @@ class Backend {
                     
                     // Add new object to Parse
                     // CITE: Taken from Parse's quick start tutorial: https://parse.com/apps/quickstart#parse_data/mobile/ios/swift/existing
-                    var testObject = PFObject(className: self.courseString)
+                    var testObject = PFObject(className: parseClassString)
                     testObject["groupID"] = groupID
                     testObject["sectionProf"] = myProf
                     testObject["shareToken"] = shareToken
@@ -154,7 +153,7 @@ class Backend {
     
     // Get member count from Parse with some courseString(ClassName) and sectionNumber, gotten from the global variables,
     func getParseMemberCount(groupID: String, objID: String) -> Void { // Can extend to get other information from Parse
-        var query = PFQuery(className:courseString)
+        var query = PFQuery(className:tempString)
         query.getObjectInBackgroundWithId(objID)
             {
             (object: PFObject?, error: NSError?) -> Void in
@@ -211,7 +210,7 @@ class Backend {
     
     // Delete group from both GroupMe and Parse
     func deleteGroup(groupID:String, objID:String) -> Void {
-        var query = PFQuery(className:courseString)
+        var query = PFQuery(className:tempString)
         query.getObjectInBackgroundWithId(objID) {
             (object: PFObject?, error: NSError?) -> Void in
             if error != nil {

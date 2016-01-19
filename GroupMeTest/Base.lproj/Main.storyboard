@@ -53,7 +53,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="XTZ-21-yb6" detailTextLabel="fkI-DH-mPW" style="IBUITableViewCellStyleSubtitle" id="hcx-hc-pzA">
-                                <rect key="frame" x="0.0" y="86" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="22" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hcx-hc-pzA" id="A1g-d5-ZrK">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -265,6 +265,7 @@
                                                     <state key="normal" title="Create"/>
                                                     <connections>
                                                         <action selector="createButtonPressed:" destination="bS7-Cs-Y6e" eventType="touchUpInside" id="6rf-wj-u9R"/>
+                                                        <segue destination="K2f-SA-D8W" kind="show" identifier="createToDashSegue" id="SSS-M4-TRI"/>
                                                     </connections>
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cPO-WX-6aV" userLabel="Section Field">
@@ -307,7 +308,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p02-4w-7ej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3124" y="575"/>
+            <point key="canvasLocation" x="3158" y="617"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qfs-zb-iah">
@@ -399,6 +400,6 @@
         <segue reference="9SU-0u-btc"/>
         <segue reference="xwc-ml-NbH"/>
         <segue reference="fae-h0-Wxe"/>
-        <segue reference="UgP-nu-y8G"/>
+        <segue reference="TSH-S2-vE7"/>
     </inferredMetricsTieBreakers>
 </document>

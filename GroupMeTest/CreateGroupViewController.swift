@@ -67,8 +67,8 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         else {
             // Time to make Create Group call from backend
             let myBackend = Backend()
-            myBackend.testFunc("else reached")
             myBackend.makeSection(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
+            self.performSegueWithIdentifier("createToDashSegue", sender: self)
 
         }
         
@@ -103,9 +103,9 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
             sectionVC.selectedSubjectString = self.selectedSubjectString
             sectionVC.parseClassString = self.parseClassString
         }
-        if segue.identifier == "createToDashSegue" {
-            let dashVC = segue.destinationViewController as! DashboardTableViewController
-        }
+//        if segue.identifier == "createToDashSegue" {
+//            let dashVC = segue.destinationViewController as! DashboardTableViewController
+//        }
     }
 
     
