@@ -53,7 +53,6 @@ class Backend {
         var shareToken = String()
         
         // Retrieve stored tokens
-        let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String
         let adminToken = NSUserDefaults.standardUserDefaults().objectForKey("adminToken") as? String
         
         // Make a new group
@@ -90,7 +89,7 @@ class Backend {
                                 NSUserDefaults.standardUserDefaults().setObject(classObjectMap, forKey: "classObjectMap")
                             }
                             // Now add the USER to this new group!
-                            self.makeString(groupID, shareToken: shareToken, objID: objectID, token: userToken!, courseString: parseClassString)
+                            self.makeString(groupID, shareToken: shareToken, objID: objectID, courseString: parseClassString)
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
