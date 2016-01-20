@@ -29,9 +29,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as! Bool
+        if let hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as? Bool {
         if hasLoggedIn {
             self.performSegueWithIdentifier("startToDashSegue", sender: self)
+            }
         }
     }
 
