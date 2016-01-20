@@ -24,15 +24,21 @@ class ViewController: UIViewController {
         UIApplication.sharedApplication().openURL(authURL!)
         
         // Skip Welcome page on subsequent logins
-        NSUserDefaults.standardUserDefaults().setObject(false, forKey: "hasLoggedIn")
+//        NSUserDefaults.standardUserDefaults().setObject(false, forKey: "hasLoggedIn")
 
     }
     @IBAction func viewButtonPressed(sender: AnyObject) {
 //        self.performSegueWithIdentifier("startToDashSegue", sender: self)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewButton.hidden = true
+        if let hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as? Bool {
+            if hasLoggedIn {
+                viewButton.hidden = false
+            }
+        }
 
     }
 
