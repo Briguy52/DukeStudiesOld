@@ -23,7 +23,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv1-zf-kxB">
-                                <rect key="frame" x="152" y="275" width="280" height="50"/>
+                                <rect key="frame" x="152" y="276" width="280" height="50"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="5RX-y6-hfZ"/>
@@ -49,17 +49,35 @@
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7go-t6-pu4">
+                                <rect key="frame" x="152" y="345" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Sgc-a9-9aY"/>
+                                </constraints>
+                                <state key="normal" title="View my Groups"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="viewButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TgM-Qe-gaK"/>
+                                    <segue destination="W8J-MN-hSa" kind="show" id="BcZ-zH-K13"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hjy-kx-RXn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j8w-tH-CUl"/>
+                            <constraint firstItem="7go-t6-pu4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nds-7d-6IE"/>
                             <constraint firstItem="Dv1-zf-kxB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o57-qh-iHf"/>
                             <constraint firstItem="dTX-z1-a2t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x0W-2s-TgG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="largeButton" destination="Dv1-zf-kxB" id="JAD-Nl-6Lk"/>
-                        <segue destination="K2f-SA-D8W" kind="show" identifier="startToDashSegue" id="zHY-at-khg"/>
+                        <outlet property="viewButton" destination="7go-t6-pu4" id="2mC-0O-0Eu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -205,7 +223,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="K2f-SA-D8W" kind="show" identifier="sectionToDashSegue" id="xwc-ml-NbH"/>
+                                    <segue destination="W8J-MN-hSa" kind="show" identifier="sectionToDashSegue" id="xwc-ml-NbH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -306,7 +324,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="K2f-SA-D8W" kind="show" identifier="createToDashSegue" id="fVB-kb-mAd"/>
+                                            <segue destination="W8J-MN-hSa" kind="show" identifier="createToDashSegue" id="fVB-kb-mAd"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -349,12 +367,12 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="7aI-tr-NPE" kind="relationship" relationship="rootViewController" id="UgP-nu-y8G"/>
-                        <segue destination="K2f-SA-D8W" kind="show" id="wr3-cu-6E4"/>
+                        <segue destination="W8J-MN-hSa" kind="show" id="wr3-cu-6E4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDc-9H-WYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="-238"/>
+            <point key="canvasLocation" x="-126" y="-296"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="qxp-es-Dgk">
@@ -366,7 +384,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell " rowHeight="60" id="JDF-BS-4g1">
-                                <rect key="frame" x="0.0" y="28" width="600" height="60"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JDF-BS-4g1" id="J19-mV-Bgt">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="59.5"/>
@@ -404,7 +422,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Owa-9H-BzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3386" y="-1142"/>
+            <point key="canvasLocation" x="4198" y="-1142"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="him-sY-eDF">
@@ -425,28 +443,31 @@
             <point key="canvasLocation" x="-27" y="519"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="YGx-gv-Uo5">
+        <scene sceneID="XIV-0n-nfS">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bu9-zg-4ey" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="W8J-MN-hSa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0JE-xy-GmL">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Xa-DN-flI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="K2f-SA-D8W" kind="relationship" relationship="rootViewController" id="V6I-D5-gHj"/>
+                    </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rqA-9R-klv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Fw-En-5xV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2304" y="-1734"/>
+            <point key="canvasLocation" x="3386" y="-1142"/>
         </scene>
     </scenes>
     <resources>
         <image name="library_backround.jpg" width="2508" height="1674"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="m7g-d1-G94"/>
         <segue reference="9SU-0u-btc"/>
-        <segue reference="zHY-at-khg"/>
-        <segue reference="UgP-nu-y8G"/>
+        <segue reference="m7g-d1-G94"/>
+        <segue reference="BcZ-zH-K13"/>
+        <segue reference="TSH-S2-vE7"/>
     </inferredMetricsTieBreakers>
 </document>

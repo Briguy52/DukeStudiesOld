@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var largeButton: UIButton!
+    @IBOutlet weak var viewButton: UIButton!
 
     @IBAction func largeButtonPress(sender: AnyObject) {
         
@@ -26,28 +27,18 @@ class ViewController: UIViewController {
         NSUserDefaults.standardUserDefaults().setObject(false, forKey: "hasLoggedIn")
 
     }
+    @IBAction func viewButtonPressed(sender: AnyObject) {
+//        self.performSegueWithIdentifier("startToDashSegue", sender: self)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as? Bool {
-        if hasLoggedIn {
-            self.performSegueWithIdentifier("startToDashSegue", sender: self)
-            }
-        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "startToDashSegue" {
-            let dashVC = segue.destinationViewController as! DashboardTableViewController
-            print("segue received") 
-        }
-    }
-
-
 }
 
