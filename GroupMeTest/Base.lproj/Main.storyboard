@@ -80,7 +80,7 @@
             </objects>
             <point key="canvasLocation" x="1423" y="-1242"/>
         </scene>
-        <!--Subject-->
+        <!--Choose a Subject-->
         <scene sceneID="72a-ch-d74">
             <objects>
                 <tableViewController id="7aI-tr-NPE" customClass="SubjectTableViewController" customModule="GroupMeTest" customModuleProvider="target" sceneMemberID="viewController">
@@ -119,7 +119,7 @@
                             <outlet property="delegate" destination="7aI-tr-NPE" id="mqP-ry-OS0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Subject" id="dfO-GI-eaS">
+                    <navigationItem key="navigationItem" title="Choose a Subject" id="dfO-GI-eaS">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Xhk-I2-DPy">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="7aI-tr-NPE" id="ZvY-lm-14o"/>
