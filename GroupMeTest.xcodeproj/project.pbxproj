@@ -11,8 +11,6 @@
 		637FAD1B1C49EEF90058783F /* SectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637FAD1A1C49EEF90058783F /* SectionTableViewController.swift */; };
 		6C2EB86DC8CBAC913D19023B /* Pods_GroupMeTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B08F12E6611C22D6E494E2E9 /* Pods_GroupMeTest.framework */; };
 		6DE5D28D0CDD4DB2B2B7AA0B /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E24914A70891FD3EC4FD773B /* Pods.framework */; };
-		AF2030451C5051A600B145AF /* duke in Resources */ = {isa = PBXBuildFile; fileRef = AF2030441C5051A600B145AF /* duke */; };
-		AF2030471C50527900B145AF /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = AF2030461C50527900B145AF /* AppIcon.appiconset */; };
 		AF2387641C49E3A000C61BE9 /* SubjectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */; };
 		AF2387661C49E3D900C61BE9 /* CourseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */; };
 		AF4487E81C4F427800F1A148 /* chapelSnow.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AF4487E71C4F427800F1A148 /* chapelSnow.jpeg */; };
@@ -41,8 +39,6 @@
 		14B7A4995F7B2F9B1339254E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		631468BD1C4C7F57004E252A /* DashboardTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardTableViewController.swift; sourceTree = "<group>"; };
 		637FAD1A1C49EEF90058783F /* SectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionTableViewController.swift; sourceTree = "<group>"; };
-		AF2030441C5051A600B145AF /* duke */ = {isa = PBXFileReference; lastKnownFileType = folder; path = duke; sourceTree = "<group>"; };
-		AF2030461C50527900B145AF /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = duke/ios/AppIcon.appiconset; sourceTree = "<group>"; };
 		AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewController.swift; sourceTree = "<group>"; };
 		AF2387651C49E3D900C61BE9 /* CourseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewController.swift; sourceTree = "<group>"; };
 		AF4487E71C4F427800F1A148 /* chapelSnow.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chapelSnow.jpeg; sourceTree = "<group>"; };
@@ -50,7 +46,7 @@
 		AF78580A1C4B23080072A821 /* CreateGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
 		AF78580C1C4B2F850072A821 /* Backend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		AF78580E1C4B308D0072A821 /* courses.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = courses.json; sourceTree = "<group>"; };
-		AFCD8AB31C210B4D00A4A0EB /* Duke Studies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Duke Studies.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFCD8AB31C210B4D00A4A0EB /* GroupMeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroupMeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFCD8AB61C210B4D00A4A0EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFCD8AB81C210B4D00A4A0EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AFCD8ABB1C210B4D00A4A0EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -136,7 +132,7 @@
 		AFCD8AB41C210B4D00A4A0EB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AFCD8AB31C210B4D00A4A0EB /* Duke Studies.app */,
+				AFCD8AB31C210B4D00A4A0EB /* GroupMeTest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -151,8 +147,6 @@
 				AF4487E71C4F427800F1A148 /* chapelSnow.jpeg */,
 				AF78580C1C4B2F850072A821 /* Backend.swift */,
 				AFCD8ABD1C210B4D00A4A0EB /* Assets.xcassets */,
-				AF2030461C50527900B145AF /* AppIcon.appiconset */,
-				AF2030441C5051A600B145AF /* duke */,
 				AFCD8ABF1C210B4D00A4A0EB /* LaunchScreen.storyboard */,
 				AFCD8AC21C210B4D00A4A0EB /* Info.plist */,
 				AF2387631C49E3A000C61BE9 /* SubjectTableViewController.swift */,
@@ -168,9 +162,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AFCD8AB21C210B4D00A4A0EB /* Duke Studies */ = {
+		AFCD8AB21C210B4D00A4A0EB /* GroupMeTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AFCD8AC51C210B4D00A4A0EB /* Build configuration list for PBXNativeTarget "Duke Studies" */;
+			buildConfigurationList = AFCD8AC51C210B4D00A4A0EB /* Build configuration list for PBXNativeTarget "GroupMeTest" */;
 			buildPhases = (
 				4F74B4B10BDFE8697AC7207B /* Check Pods Manifest.lock */,
 				AFCD8AAF1C210B4D00A4A0EB /* Sources */,
@@ -183,9 +177,9 @@
 			);
 			dependencies = (
 			);
-			name = "Duke Studies";
+			name = GroupMeTest;
 			productName = GroupMeTest;
-			productReference = AFCD8AB31C210B4D00A4A0EB /* Duke Studies.app */;
+			productReference = AFCD8AB31C210B4D00A4A0EB /* GroupMeTest.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +196,7 @@
 					};
 				};
 			};
-			buildConfigurationList = AFCD8AAE1C210B4D00A4A0EB /* Build configuration list for PBXProject "Duke Studies" */;
+			buildConfigurationList = AFCD8AAE1C210B4D00A4A0EB /* Build configuration list for PBXProject "GroupMeTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -215,7 +209,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AFCD8AB21C210B4D00A4A0EB /* Duke Studies */,
+				AFCD8AB21C210B4D00A4A0EB /* GroupMeTest */,
 			);
 		};
 /* End PBXProject section */
@@ -225,14 +219,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF2030471C50527900B145AF /* AppIcon.appiconset in Resources */,
 				AF78580F1C4B308D0072A821 /* courses.json in Resources */,
 				AFCD8AC11C210B4D00A4A0EB /* LaunchScreen.storyboard in Resources */,
 				AFCD8ABE1C210B4D00A4A0EB /* Assets.xcassets in Resources */,
 				AF4487E81C4F427800F1A148 /* chapelSnow.jpeg in Resources */,
 				AF5185D41C4E0A9600BA0C60 /* library_backround.jpg in Resources */,
 				AFCD8ABC1C210B4D00A4A0EB /* Main.storyboard in Resources */,
-				AF2030451C5051A600B145AF /* duke in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +405,7 @@
 				INFOPLIST_FILE = GroupMeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BrianLin.GroupMeTest;
-				PRODUCT_NAME = "Duke Studies";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -425,14 +417,14 @@
 				INFOPLIST_FILE = GroupMeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = BrianLin.GroupMeTest;
-				PRODUCT_NAME = "Duke Studies";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		AFCD8AAE1C210B4D00A4A0EB /* Build configuration list for PBXProject "Duke Studies" */ = {
+		AFCD8AAE1C210B4D00A4A0EB /* Build configuration list for PBXProject "GroupMeTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFCD8AC31C210B4D00A4A0EB /* Debug */,
@@ -441,7 +433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AFCD8AC51C210B4D00A4A0EB /* Build configuration list for PBXNativeTarget "Duke Studies" */ = {
+		AFCD8AC51C210B4D00A4A0EB /* Build configuration list for PBXNativeTarget "GroupMeTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AFCD8AC61C210B4D00A4A0EB /* Debug */,
