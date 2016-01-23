@@ -4,24 +4,52 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "159E34C758C359751F5CDED89B1ED41190DE7C5F" : 0,
     "B838A2A3F2D04B932BCC646B11C4B3085A497770" : 0,
-    "67620B5EFA902936DF04070AF595B76AB0333747" : 0
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748" : 0,
+    "159E34C758C359751F5CDED89B1ED41190DE7C5F" : 0,
+    "67620B5EFA902936DF04070AF595B76AB0333747" : 0,
+    "61C4B9E3B61282127C102C87B46B8CDE985974AE" : 0,
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : 0,
+    "2782489666A0C780BCA87B8C53915A711A6BDD7C" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5BF5A045-80F6-4EFB-B196-B4EC3C6D6BF9",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "159E34C758C359751F5CDED89B1ED41190DE7C5F" : "Duke-Study-Group\/",
     "B838A2A3F2D04B932BCC646B11C4B3085A497770" : "DukeStudiesOld\/",
-    "67620B5EFA902936DF04070AF595B76AB0333747" : "DukeStudiesOld\/Alamofire\/"
+    "0DCFF0852789D5A49F67B6C8EA2636735D303748" : "DukeStudiesOld\/Parse-SDK-iOS-OSX\/Carthage\/Checkouts\/Bolts-iOS\/Vendor\/xctoolchain\/",
+    "159E34C758C359751F5CDED89B1ED41190DE7C5F" : "Duke-Study-Group\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "DukeStudiesOld\/Alamofire\/",
+    "61C4B9E3B61282127C102C87B46B8CDE985974AE" : "DukeStudiesOld\/Parse-SDK-iOS-OSX\/Carthage\/Checkouts\/Bolts-iOS\/",
+    "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025" : "DukeStudiesOld\/Parse-SDK-iOS-OSX\/Carthage\/Checkouts\/OCMock\/",
+    "2782489666A0C780BCA87B8C53915A711A6BDD7C" : "DukeStudiesOld\/Parse-SDK-iOS-OSX\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "GroupMeTest",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "GroupMeTest.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ParsePlatform\/xctoolchain.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ParsePlatform\/xctoolchain.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0DCFF0852789D5A49F67B6C8EA2636735D303748"
+    },
+    {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/huyouare\/Duke-Study-Group.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "159E34C758C359751F5CDED89B1ED41190DE7C5F"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ParsePlatform\/Parse-SDK-iOS-OSX.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2782489666A0C780BCA87B8C53915A711A6BDD7C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/BoltsFramework\/Bolts-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "61C4B9E3B61282127C102C87B46B8CDE985974AE"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
@@ -32,6 +60,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Briguy52\/DukeStudiesOld.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B838A2A3F2D04B932BCC646B11C4B3085A497770"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/erikdoe\/OCMock.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E4BCE3AE6B24E41B9BCE312FF3B0B6CD0B8B8025"
     }
   ]
 }

@@ -39,18 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Skip Welcome page on subsequent logins
         NSUserDefaults.standardUserDefaults().setObject(true, forKey: "hasLoggedIn")
         
-        // Test retrieval
-//        if let test = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
-//            print("Access token is: " + test)
-//        }
-        
-        // Test completion handling
-//        let myBackend = Backend()
-//        myBackend.testFunc("commands") {
-//            (result: String) in
-//            print("got back: \(result)")
-//        }
-        
         return true;
     }
     
