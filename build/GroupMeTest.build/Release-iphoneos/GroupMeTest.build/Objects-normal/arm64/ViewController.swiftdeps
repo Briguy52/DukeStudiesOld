@@ -1,0 +1,349 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "hasLoggedIn"
+- "ViewController"
+provides-nominal:
+- "C11GroupMeTest14ViewController"
+provides-member:
+- ["C11GroupMeTest14ViewController", ""]
+provides-dynamic-lookup:
+- "largeButtonPress"
+- "didReceiveMemoryWarning"
+- "largeButton"
+- "viewButton"
+- "viewButtonPressed"
+- "viewDidLoad"
+depends-top-level:
+- !private "NSURL"
+- "BooleanLiteralType"
+- !private "NSUserDefaults"
+- !private "UIApplication"
+- !private "Bool"
+- "hasLoggedIn"
+- "UIViewController"
+- !private "StringLiteralType"
+- "ViewController"
+- "UIButton"
+- "AnyObject"
+depends-member:
+- !private ["PSs9AnyObject", "NSURL"]
+- !private ["PSs9AnyObject", "NSUserDefaults"]
+- !private ["PSs9AnyObject", "UIApplication"]
+- ["PSs9AnyObject", "didReceiveMemoryWarning"]
+- !private ["PSs9AnyObject", "hidden"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "largeButton"]
+- ["PSs9AnyObject", "largeButtonPress"]
+- !private ["PSs9AnyObject", "objectForKey"]
+- !private ["PSs9AnyObject", "openURL"]
+- !private ["PSs9AnyObject", "sharedApplication"]
+- !private ["PSs9AnyObject", "standardUserDefaults"]
+- ["PSs9AnyObject", "viewButton"]
+- ["PSs9AnyObject", "viewButtonPressed"]
+- ["PSs9AnyObject", "viewDidLoad"]
+- ["PSs9AnyObject", ""]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["PSs25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs11BooleanType", "_getBuiltinLogicValue"]
+- !private ["PSs11CVarArgType", "NSURL"]
+- !private ["PSs11CVarArgType", "NSUserDefaults"]
+- !private ["PSs11CVarArgType", "UIApplication"]
+- ["PSs11CVarArgType", "didReceiveMemoryWarning"]
+- !private ["PSs11CVarArgType", "hidden"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "largeButton"]
+- ["PSs11CVarArgType", "largeButtonPress"]
+- !private ["PSs11CVarArgType", "objectForKey"]
+- !private ["PSs11CVarArgType", "openURL"]
+- !private ["PSs11CVarArgType", "sharedApplication"]
+- !private ["PSs11CVarArgType", "standardUserDefaults"]
+- ["PSs11CVarArgType", "viewButton"]
+- ["PSs11CVarArgType", "viewButtonPressed"]
+- ["PSs11CVarArgType", "viewDidLoad"]
+- ["PSs11CVarArgType", ""]
+- ["PSs28CustomDebugStringConvertible", "Some"]
+- !private ["PSs23CustomStringConvertible", "NSURL"]
+- !private ["PSs23CustomStringConvertible", "NSUserDefaults"]
+- !private ["PSs23CustomStringConvertible", "UIApplication"]
+- !private ["PSs23CustomStringConvertible", "_getBuiltinLogicValue"]
+- ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
+- !private ["PSs23CustomStringConvertible", "hidden"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "largeButton"]
+- ["PSs23CustomStringConvertible", "largeButtonPress"]
+- !private ["PSs23CustomStringConvertible", "objectForKey"]
+- !private ["PSs23CustomStringConvertible", "openURL"]
+- !private ["PSs23CustomStringConvertible", "sharedApplication"]
+- !private ["PSs23CustomStringConvertible", "standardUserDefaults"]
+- ["PSs23CustomStringConvertible", "viewButton"]
+- ["PSs23CustomStringConvertible", "viewButtonPressed"]
+- ["PSs23CustomStringConvertible", "viewDidLoad"]
+- ["PSs23CustomStringConvertible", ""]
+- !private ["PSs9Equatable", "NSURL"]
+- !private ["PSs9Equatable", "NSUserDefaults"]
+- !private ["PSs9Equatable", "UIApplication"]
+- !private ["PSs9Equatable", "_getBuiltinLogicValue"]
+- ["PSs9Equatable", "didReceiveMemoryWarning"]
+- !private ["PSs9Equatable", "hidden"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "largeButton"]
+- ["PSs9Equatable", "largeButtonPress"]
+- !private ["PSs9Equatable", "objectForKey"]
+- !private ["PSs9Equatable", "openURL"]
+- !private ["PSs9Equatable", "sharedApplication"]
+- !private ["PSs9Equatable", "standardUserDefaults"]
+- ["PSs9Equatable", "viewButton"]
+- ["PSs9Equatable", "viewButtonPressed"]
+- ["PSs9Equatable", "viewDidLoad"]
+- ["PSs9Equatable", ""]
+- !private ["PSs8Hashable", "NSURL"]
+- !private ["PSs8Hashable", "NSUserDefaults"]
+- !private ["PSs8Hashable", "UIApplication"]
+- !private ["PSs8Hashable", "_getBuiltinLogicValue"]
+- ["PSs8Hashable", "didReceiveMemoryWarning"]
+- !private ["PSs8Hashable", "hidden"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "largeButton"]
+- ["PSs8Hashable", "largeButtonPress"]
+- !private ["PSs8Hashable", "objectForKey"]
+- !private ["PSs8Hashable", "openURL"]
+- !private ["PSs8Hashable", "sharedApplication"]
+- !private ["PSs8Hashable", "standardUserDefaults"]
+- ["PSs8Hashable", "viewButton"]
+- ["PSs8Hashable", "viewButtonPressed"]
+- ["PSs8Hashable", "viewDidLoad"]
+- ["PSs8Hashable", ""]
+- !private ["PSo8NSCoding", "NSURL"]
+- !private ["PSo8NSCoding", "NSUserDefaults"]
+- !private ["PSo8NSCoding", "UIApplication"]
+- ["PSo8NSCoding", "didReceiveMemoryWarning"]
+- !private ["PSo8NSCoding", "hidden"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "largeButton"]
+- ["PSo8NSCoding", "largeButtonPress"]
+- ["PSo8NSCoding", "viewButton"]
+- ["PSo8NSCoding", "viewButtonPressed"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo26NSExtensionRequestHandling", "NSURL"]
+- !private ["PSo26NSExtensionRequestHandling", "NSUserDefaults"]
+- !private ["PSo26NSExtensionRequestHandling", "UIApplication"]
+- ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "largeButton"]
+- ["PSo26NSExtensionRequestHandling", "largeButtonPress"]
+- ["PSo26NSExtensionRequestHandling", "viewButton"]
+- ["PSo26NSExtensionRequestHandling", "viewButtonPressed"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "Bool"]
+- !private ["CSo8NSObject", "NSURL"]
+- !private ["CSo8NSObject", "NSUserDefaults"]
+- !private ["CSo8NSObject", "UIApplication"]
+- ["CSo8NSObject", "UIButton"]
+- ["CSo8NSObject", "didReceiveMemoryWarning"]
+- !private ["CSo8NSObject", "hidden"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "largeButton"]
+- ["CSo8NSObject", "largeButtonPress"]
+- !private ["CSo8NSObject", "objectForKey"]
+- !private ["CSo8NSObject", "openURL"]
+- !private ["CSo8NSObject", "sharedApplication"]
+- !private ["CSo8NSObject", "standardUserDefaults"]
+- ["CSo8NSObject", "viewButton"]
+- ["CSo8NSObject", "viewButtonPressed"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "NSURL"]
+- !private ["PSo16NSObjectProtocol", "NSUserDefaults"]
+- !private ["PSo16NSObjectProtocol", "UIApplication"]
+- ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
+- !private ["PSo16NSObjectProtocol", "hidden"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "largeButton"]
+- ["PSo16NSObjectProtocol", "largeButtonPress"]
+- !private ["PSo16NSObjectProtocol", "objectForKey"]
+- !private ["PSo16NSObjectProtocol", "openURL"]
+- !private ["PSo16NSObjectProtocol", "sharedApplication"]
+- !private ["PSo16NSObjectProtocol", "standardUserDefaults"]
+- ["PSo16NSObjectProtocol", "viewButton"]
+- ["PSo16NSObjectProtocol", "viewButtonPressed"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo5NSURL", "init"]
+- !private ["CSo14NSUserDefaults", "objectForKey"]
+- !private ["CSo14NSUserDefaults", "standardUserDefaults"]
+- ["PSs21NilLiteralConvertible", "Some"]
+- ["Sq", "Some"]
+- !private ["Sq", "deinit"]
+- !private ["PSo29UIAccessibilityIdentification", "hidden"]
+- !private ["PSo12UIAppearance", "hidden"]
+- !private ["PSo21UIAppearanceContainer", "NSURL"]
+- !private ["PSo21UIAppearanceContainer", "NSUserDefaults"]
+- !private ["PSo21UIAppearanceContainer", "UIApplication"]
+- ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
+- !private ["PSo21UIAppearanceContainer", "hidden"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "largeButton"]
+- ["PSo21UIAppearanceContainer", "largeButtonPress"]
+- ["PSo21UIAppearanceContainer", "viewButton"]
+- ["PSo21UIAppearanceContainer", "viewButtonPressed"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["CSo13UIApplication", "openURL"]
+- !private ["CSo13UIApplication", "sharedApplication"]
+- !private ["CSo8UIButton", "hidden"]
+- !private ["PSo18UIContentContainer", "NSURL"]
+- !private ["PSo18UIContentContainer", "NSUserDefaults"]
+- !private ["PSo18UIContentContainer", "UIApplication"]
+- ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "largeButton"]
+- ["PSo18UIContentContainer", "largeButtonPress"]
+- ["PSo18UIContentContainer", "viewButton"]
+- ["PSo18UIContentContainer", "viewButtonPressed"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["CSo9UIControl", "hidden"]
+- !private ["PSo17UICoordinateSpace", "hidden"]
+- !private ["PSo13UIDynamicItem", "hidden"]
+- !private ["PSo18UIFocusEnvironment", "NSURL"]
+- !private ["PSo18UIFocusEnvironment", "NSUserDefaults"]
+- !private ["PSo18UIFocusEnvironment", "UIApplication"]
+- ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
+- !private ["PSo18UIFocusEnvironment", "hidden"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "largeButton"]
+- ["PSo18UIFocusEnvironment", "largeButtonPress"]
+- ["PSo18UIFocusEnvironment", "viewButton"]
+- ["PSo18UIFocusEnvironment", "viewButtonPressed"]
+- ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- ["CSo11UIResponder", "AnyObject"]
+- !private ["CSo11UIResponder", "Bool"]
+- !private ["CSo11UIResponder", "NSURL"]
+- !private ["CSo11UIResponder", "NSUserDefaults"]
+- !private ["CSo11UIResponder", "UIApplication"]
+- ["CSo11UIResponder", "UIButton"]
+- ["CSo11UIResponder", "didReceiveMemoryWarning"]
+- !private ["CSo11UIResponder", "hidden"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "largeButton"]
+- ["CSo11UIResponder", "largeButtonPress"]
+- !private ["CSo11UIResponder", "openURL"]
+- !private ["CSo11UIResponder", "sharedApplication"]
+- ["CSo11UIResponder", "viewButton"]
+- ["CSo11UIResponder", "viewButtonPressed"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo16UIStateRestoring", "NSURL"]
+- !private ["PSo16UIStateRestoring", "NSUserDefaults"]
+- !private ["PSo16UIStateRestoring", "UIApplication"]
+- ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "largeButton"]
+- ["PSo16UIStateRestoring", "largeButtonPress"]
+- ["PSo16UIStateRestoring", "viewButton"]
+- ["PSo16UIStateRestoring", "viewButtonPressed"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["PSo18UITraitEnvironment", "NSURL"]
+- !private ["PSo18UITraitEnvironment", "NSUserDefaults"]
+- !private ["PSo18UITraitEnvironment", "UIApplication"]
+- ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
+- !private ["PSo18UITraitEnvironment", "hidden"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "largeButton"]
+- ["PSo18UITraitEnvironment", "largeButtonPress"]
+- ["PSo18UITraitEnvironment", "viewButton"]
+- ["PSo18UITraitEnvironment", "viewButtonPressed"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "hidden"]
+- ["CSo16UIViewController", "AnyObject"]
+- !private ["CSo16UIViewController", "Bool"]
+- !private ["CSo16UIViewController", "NSURL"]
+- !private ["CSo16UIViewController", "NSUserDefaults"]
+- !private ["CSo16UIViewController", "UIApplication"]
+- ["CSo16UIViewController", "UIButton"]
+- ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "largeButton"]
+- ["CSo16UIViewController", "largeButtonPress"]
+- ["CSo16UIViewController", "viewButton"]
+- ["CSo16UIViewController", "viewButtonPressed"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- ["CSo16UIViewController", ""]
+- ["C11GroupMeTest14ViewController", "AnyObject"]
+- !private ["C11GroupMeTest14ViewController", "Bool"]
+- !private ["C11GroupMeTest14ViewController", "NSURL"]
+- !private ["C11GroupMeTest14ViewController", "NSUserDefaults"]
+- !private ["C11GroupMeTest14ViewController", "UIApplication"]
+- ["C11GroupMeTest14ViewController", "UIButton"]
+- ["C11GroupMeTest14ViewController", "deinit"]
+- ["C11GroupMeTest14ViewController", "didReceiveMemoryWarning"]
+- ["C11GroupMeTest14ViewController", "init"]
+- ["C11GroupMeTest14ViewController", "largeButton"]
+- ["C11GroupMeTest14ViewController", "largeButtonPress"]
+- ["C11GroupMeTest14ViewController", "viewButton"]
+- ["C11GroupMeTest14ViewController", "viewButtonPressed"]
+- ["C11GroupMeTest14ViewController", "viewDidLoad"]
+- !private ["PSs33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["PSs32_FileReferenceLiteralConvertible", "init"]
+- !private ["PSs21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- ["PSs12_Reflectable", "Some"]
+- !private ["PSs12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["PSs12_Reflectable", "hidden"]
+- !private ["PSs12_Reflectable", "init"]
+depends-nominal:
+- "PSs9AnyObject"
+- !private "Sb"
+- !private "PSs25BooleanLiteralConvertible"
+- !private "PSs11BooleanType"
+- "PSs11CVarArgType"
+- "PSs28CustomDebugStringConvertible"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- "PSs8Hashable"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo5NSURL"
+- !private "CSo14NSUserDefaults"
+- "PSs21NilLiteralConvertible"
+- "Sq"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "CSo13UIApplication"
+- !private "CSo8UIButton"
+- "PSo18UIContentContainer"
+- !private "CSo9UIControl"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "CSo11UIResponder"
+- "PSo16UIStateRestoring"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- "C11GroupMeTest14ViewController"
+- !private "PSs33_BuiltinBooleanLiteralConvertible"
+- !private "PSs32_FileReferenceLiteralConvertible"
+- !private "PSs21_ObjectiveCBridgeable"
+- "PSs12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+interface-hash: "764f3cee35196e78650942d27e3a6724"

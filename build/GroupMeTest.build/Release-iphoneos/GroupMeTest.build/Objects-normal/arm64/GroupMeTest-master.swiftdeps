@@ -1,0 +1,12 @@
+version: "Apple Swift version 2.1.1 (swiftlang-700.1.101.15 clang-700.1.81)"
+options: "c1d08d37cab0bb633c00345785288950"
+build_time: [506827862, 761946000]
+inputs:
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/CourseTableViewController.swift": !dirty [506532618, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/ViewController.swift": !dirty [506579495, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/SectionTableViewController.swift": !dirty [506757527, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/AppDelegate.swift": !dirty [506579499, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/DashboardTableViewController.swift": !dirty [506534960, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/CreateGroupViewController.swift": !dirty [506539770, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/SubjectTableViewController.swift": !dirty [506533146, 0]
+  "/Users/BrianLin/GitHub/DukeStudiesOld/GroupMeTest/Backend.swift": !dirty [506539972, 0]
