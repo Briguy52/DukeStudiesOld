@@ -13,6 +13,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
+    
     
     @IBOutlet weak var largeButton: UIButton!
     @IBOutlet weak var viewButton: UIButton!
@@ -33,6 +35,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSUserDefaults.standardUserDefaults().setObject(self.ADMIN_TOKEN, forKey: "adminToken")
         viewButton.hidden = true
         if let hasLoggedIn = NSUserDefaults.standardUserDefaults().objectForKey("hasLoggedIn") as? Bool {
             if hasLoggedIn {

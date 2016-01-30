@@ -29,7 +29,7 @@ class Backend {
     let baseURL = "https://api.groupme.com/v3"
     let ADMIN_TOKEN: String! = "Uy6V4BXpuvHDp6XUWZ0IkgSQojFRw1h3SRhAWoK6"
     var sectionNumber = "99"
-//    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
+    //    var ACCESS_TOKEN: String! = "789c70c095910133042e1d21ec12b914" // user's access token, comes from OAuth login
     var tempString = "Test1"
     // Prints a String
     func testFunc(myString: String, completion: (result: String) -> Void) {
@@ -44,7 +44,7 @@ class Backend {
     // Called by: CreateGroupViewController.swift
     
     // Helper function to make a new group when section doesn't exist, makes nested call to joinGroup()
-    // Inputs: 
+    // Inputs:
     //    1) Course String - from inherited global variable
     //    2) Section Number String - from text field
     //    3) Professor Name String - from text field
@@ -86,7 +86,7 @@ class Backend {
                                 (result: String) in
                                 completion(result: "create and join finished")
                             }
-
+                            
                         }
                         else {
                             print("Error has occurred in storing new group " + groupID)
@@ -96,7 +96,7 @@ class Backend {
                 }
         }
     }
-    
+
     
     // --------------------------
     //  Joining an existing group
@@ -120,8 +120,8 @@ class Backend {
         
         // Add user to group with Alamofire
         Alamofire.request(.POST, self.baseURL + myRequest + "?token=" + userToken!)
-//        print("Group Joined")
-//        print("courseString: " + courseString + " " + "objID: " + objID)
+        //        print("Group Joined")
+        //        print("courseString: " + courseString + " " + "objID: " + objID)
         
         // Update Parse's member count for that group
         var query = PFQuery(className:courseString)
@@ -149,7 +149,7 @@ class Backend {
         }
         
     }
-
+    
     
     // Recheck member count in GroupMe through Alamofire call
     func getGroupMeMemberCount(groupID: String, objID: String) -> Void {
@@ -170,38 +170,38 @@ class Backend {
         var query = PFQuery(className:tempString)
         query.getObjectInBackgroundWithId(objID)
             {
-            (object: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-                print("Error from Parse")
-            } else if let object = object {
-                var memberCount: Int = object["memberCount"] as! Int
-                // !!!!!!! PUT THE NEXT CODE/FUNCTION TO BE RUN HERE TO WAIT FOR PARSE RESPONSE
-            }
+                (object: PFObject?, error: NSError?) -> Void in
+                if error != nil {
+                    print(error)
+                    print("Error from Parse")
+                } else if let object = object {
+                    var memberCount: Int = object["memberCount"] as! Int
+                    // !!!!!!! PUT THE NEXT CODE/FUNCTION TO BE RUN HERE TO WAIT FOR PARSE RESPONSE
+                }
         }
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [PFObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                // The find succeeded.
-//                print("Successfully retrieved \(objects!.count) groups.")
-//                // Do something with the found objects
-//                if let objects = objects {
-//                    for object in objects {
-//                        print("Object ID: " + object.objectId!)
-//                        print("Group ID: " + String(object["groupID"]))
-//                        print("Share Token: " + String(object["shareToken"]))
-//                        print("Member Count: " + String(object["memberCount"]))
-//                        
-//                        if object["memberCount"] as! Int > maxMembers {
-//                            objectID = object.objectId!
-//                            groupID = object["groupID"] as! String
-//                            shareToken = object["shareToken"] as! String
-//                            maxMembers = object["memberCount"] as! Int
-//                        }
-//                    }
-//                }
-//            }
-//        }
+        //        query.findObjectsInBackgroundWithBlock {
+        //            (objects: [PFObject]?, error: NSError?) -> Void in
+        //            if error == nil {
+        //                // The find succeeded.
+        //                print("Successfully retrieved \(objects!.count) groups.")
+        //                // Do something with the found objects
+        //                if let objects = objects {
+        //                    for object in objects {
+        //                        print("Object ID: " + object.objectId!)
+        //                        print("Group ID: " + String(object["groupID"]))
+        //                        print("Share Token: " + String(object["shareToken"]))
+        //                        print("Member Count: " + String(object["memberCount"]))
+        //
+        //                        if object["memberCount"] as! Int > maxMembers {
+        //                            objectID = object.objectId!
+        //                            groupID = object["groupID"] as! String
+        //                            shareToken = object["shareToken"] as! String
+        //                            maxMembers = object["memberCount"] as! Int
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
     }
     
     // Get group information for the group of interest
@@ -237,5 +237,5 @@ class Backend {
             }
         }
     }
-
+    
 }

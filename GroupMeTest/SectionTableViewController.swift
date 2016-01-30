@@ -117,10 +117,19 @@ class SectionTableViewController: UITableViewController {
             
             // Make backend call for JOIN
             let myBackend = Backend()
-            myBackend.joinGroup(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString){
-                (result: String) in
-//                print("got back: \(result)")
-                self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+            if let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
+                myBackend.joinGroup(self.groupIDArray[indexPath.row], shareToken: self.shareTokenArray[indexPath.row], objID: self.objectIDArray[indexPath.row], courseString: self.parseClassString){
+                    (result: String) in
+                    //                print("got back: \(result)")
+                    self.performSegueWithIdentifier("sectionToDashSegue", sender: self)
+                }
+            }
+            else {
+                let myAlert = UIAlertController(title: "Hold up!", message: "Please login with GroupMe.", preferredStyle: UIAlertControllerStyle.Alert)
+                myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: { (action) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(myAlert, animated: true, completion: nil)
             }
         }
     }

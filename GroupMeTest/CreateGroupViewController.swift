@@ -24,7 +24,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var sectionField: UITextField!
     
     
-    // Put other vars below    
+    // Put other vars below
     var parseClassString: String!
     var subject: NSDictionary!
     var courses: NSArray!
@@ -37,7 +37,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var createButton: UIButton!
     
-
+    
     @IBOutlet weak var fieldAlert: UILabel!
     
     override func viewDidLoad() {
@@ -60,7 +60,7 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
-
+    
     
     @IBAction func createButtonPressed(sender: AnyObject) {
         let profName = profField.text
@@ -73,22 +73,31 @@ class CreateGroupViewController: UITableViewController, UITextFieldDelegate {
         else {
             // Time to make Create Group call from backend
             let myBackend = Backend()
-//            myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
-//            self.createToDashFunc()
+            //            myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!)
+            //            self.createToDashFunc()
             
-            myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!){
-                (result: String) in
-//                print("got back: \(result)")
-                self.performSegueWithIdentifier("createToDashSegue", sender: self)
+            if let userToken = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
+                myBackend.makeGroup(self.selectedSubjectString+self.selectedCourseString, mySection: sectionNumber!, myProf: profName!){
+                    (result: String) in
+                    self.performSegueWithIdentifier("createToDashSegue", sender: self)
+                }
+            }
+            else {
+                let myAlert = UIAlertController(title: "Hold up!", message: "Please login with GroupMe.", preferredStyle: UIAlertControllerStyle.Alert)
+                myAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: { (action) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }))
+                self.presentViewController(myAlert, animated: true, completion: nil)
+                
             }
         }
-        
     }
     
-        @IBAction func cancelPressed(sender: AnyObject) {
-            self.navigationController?.popViewControllerAnimated(true)
-            self.performSegueWithIdentifier("createToSectionCancel", sender: self)
-        }
+    
+    @IBAction func cancelPressed(sender: AnyObject) {
+        self.navigationController?.popViewControllerAnimated(true)
+        self.performSegueWithIdentifier("createToSectionCancel", sender: self)
+    }
     
     // MARK: - UITextFieldDelegate
     

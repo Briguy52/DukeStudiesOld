@@ -34,14 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Store ACCESS_TOKEN locally (thanks Austin and Cody)
         NSUserDefaults.standardUserDefaults().setObject(ACCESS_TOKEN, forKey: "userToken")
-        NSUserDefaults.standardUserDefaults().setObject(ADMIN_TOKEN, forKey: "adminToken")
         
         // Skip Welcome page on subsequent logins
         NSUserDefaults.standardUserDefaults().setObject(true, forKey: "hasLoggedIn")
         
         // Test retrieval
-//        if let test = NSUserDefaults.standardUserDefaults().objectForKey("userToken") as? String {
-//            print("Access token is: " + test)
+//        if let test = NSUserDefaults.standardUserDefaults().objectForKey("adminToken") as? String {
+//            print("Admin token is: " + test)
 //        }
         
         // Test completion handling
